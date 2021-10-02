@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">android-gamesusados</string>
+
+    <!-- login -->
     <string name="username">Usuário</string>
     <string name="password">Senha</string>
     <string name="to_enter">Entrar</string>
+
+    <!-- announcement detail -->
 </resources>
