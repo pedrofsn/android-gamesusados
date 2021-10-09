@@ -1,62 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    app:cardElevation="8dp"
-    app:cardUseCompatPadding="true"
-    app:contentPadding="8dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+        <variable
+            name="data"
+            type="br.com.jogosusados.announcement.Announcement" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardElevation="8dp"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="8dp">
 
-        <TextView
-            android:id="@+id/textViewName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:drawableStartCompat="@drawable/ic_baseline_person_24"
-            app:layout_constraintEnd_toStartOf="@+id/textViewValue"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Pedro Francisco de Sousa Neto" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textViewValue"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="R$ 500,00" />
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@{data.name}"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/ic_baseline_person_24"
+                app:layout_constraintEnd_toStartOf="@+id/textViewValue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Pedro Francisco de Sousa Neto" />
 
-        <TextView
-            android:id="@+id/textViewContact"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:drawableStartCompat="@drawable/ic_baseline_email_24"
-            app:layout_constraintEnd_toEndOf="@+id/textViewName"
-            app:layout_constraintStart_toStartOf="@+id/textViewName"
-            app:layout_constraintTop_toBottomOf="@+id/textViewName"
-            tools:text="pedrokra@gmail.com" />
+            <TextView
+                android:id="@+id/textViewValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{data.value}"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="R$ 500,00" />
 
-        <TextView
-            android:id="@+id/textViewPhone"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:drawableStartCompat="@drawable/ic_baseline_phone_android_24"
-            app:layout_constraintEnd_toEndOf="@+id/textViewContact"
-            app:layout_constraintStart_toStartOf="@+id/textViewContact"
-            app:layout_constraintTop_toBottomOf="@+id/textViewContact"
-            tools:text="+55 62 9 1234-5678" />
+            <TextView
+                android:id="@+id/textViewContact"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{data.email}"
+                app:drawableStartCompat="@drawable/ic_baseline_email_24"
+                app:layout_constraintEnd_toEndOf="@+id/textViewName"
+                app:layout_constraintStart_toStartOf="@+id/textViewName"
+                app:layout_constraintTop_toBottomOf="@+id/textViewName"
+                tools:text="pedrokra@gmail.com" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/textViewPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{data.phone}"
+                app:drawableStartCompat="@drawable/ic_baseline_phone_android_24"
+                app:layout_constraintEnd_toEndOf="@+id/textViewContact"
+                app:layout_constraintStart_toStartOf="@+id/textViewContact"
+                app:layout_constraintTop_toBottomOf="@+id/textViewContact"
+                tools:text="+55 62 9 1234-5678" />
 
-</com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
