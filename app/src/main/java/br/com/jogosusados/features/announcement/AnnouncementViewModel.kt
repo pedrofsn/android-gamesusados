@@ -1,4 +1,4 @@
-package br.com.jogosusados.announcement
+package br.com.jogosusados.features.announcement
 
 import br.com.redcode.easyrestful.library.impl.viewmodel.BaseViewModelWithLiveData
 

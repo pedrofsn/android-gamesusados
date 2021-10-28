@@ -1,7 +1,9 @@
-package br.com.jogosusados.announcement
+package br.com.jogosusados.features.announcement
 
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.ViewholderAnnouncementBinding
+import br.com.jogosusados.features.announcement.Announcement
+import br.com.jogosusados.features.announcement.ViewHolderAnnouncement
 import br.com.redcode.base.mvvm.databinding.view.BaseAdapterMVVM
 
 class AdapterAnnouncement(override var click: ((Announcement, Int) -> Unit)?) :

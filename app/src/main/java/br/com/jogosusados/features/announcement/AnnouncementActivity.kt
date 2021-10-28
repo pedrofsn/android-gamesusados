@@ -1,4 +1,4 @@
-package br.com.jogosusados.announcement
+package br.com.jogosusados.features.announcement
 
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.ActivityAnnouncementBinding

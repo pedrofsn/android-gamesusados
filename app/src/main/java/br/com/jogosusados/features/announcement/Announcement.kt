@@ -1,4 +1,4 @@
-package br.com.jogosusados.announcement
+package br.com.jogosusados.features.announcement
 
 data class Announcement(
     val id: Long,

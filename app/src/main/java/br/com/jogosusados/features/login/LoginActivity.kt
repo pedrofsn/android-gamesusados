@@ -1,4 +1,4 @@
-package br.com.jogosusados.login
+package br.com.jogosusados.features.login
 
 import android.view.View
 import br.com.jogosusados.R

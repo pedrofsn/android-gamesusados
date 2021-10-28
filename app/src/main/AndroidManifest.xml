@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Androidgamesusados"
         tools:replace="allowBackup">
         <activity
-            android:name=".login.LoginActivity"
+            android:name=".features.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".announcement.AnnouncementActivity" />
+        <activity android:name=".features.announcement.AnnouncementActivity" />
     </application>
 
 </manifest>

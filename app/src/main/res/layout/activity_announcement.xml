@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="br.com.jogosusados.announcement.AnnouncementViewModel" />
+            type="br.com.jogosusados.features.announcement.AnnouncementViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

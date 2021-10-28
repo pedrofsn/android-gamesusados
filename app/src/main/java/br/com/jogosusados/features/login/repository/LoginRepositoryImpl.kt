@@ -1,8 +1,8 @@
-package br.com.jogosusados.login.repository
+package br.com.jogosusados.features.login.repository
 
-import br.com.jogosusados.Api
-import br.com.jogosusados.login.repository.payload.LoggedDTO
-import br.com.jogosusados.login.repository.payload.LoginPOST
+import br.com.jogosusados.features.Api
+import br.com.jogosusados.features.login.repository.payload.LoggedDTO
+import br.com.jogosusados.features.login.repository.payload.LoginPOST
 import br.com.jogosusados.network.doRequest
 import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
 

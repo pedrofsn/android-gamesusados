@@ -2,7 +2,7 @@ package br.com.jogosusados
 
 import android.app.Application
 import br.com.jogosusados.network.NetworkModule
-import br.com.jogosusados.login.LoginModule
+import br.com.jogosusados.features.login.LoginModule
 import org.koin.core.component.KoinComponent
 import org.koin.core.context.GlobalContext.startKoin
 

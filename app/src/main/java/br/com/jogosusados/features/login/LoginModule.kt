@@ -1,8 +1,8 @@
-package br.com.jogosusados.login
+package br.com.jogosusados.features.login
 
-import br.com.jogosusados.Api
-import br.com.jogosusados.login.repository.LoginRepository
-import br.com.jogosusados.login.repository.LoginRepositoryImpl
+import br.com.jogosusados.features.Api
+import br.com.jogosusados.features.login.repository.LoginRepository
+import br.com.jogosusados.features.login.repository.LoginRepositoryImpl
 import br.com.jogosusados.network.NetworkModule
 import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
 import com.squareup.moshi.Moshi

@@ -1,5 +1,4 @@
-package br.com.jogosusados.login.repository.payload
-
+package br.com.jogosusados.features.login.repository.payload
 
 private const val TYPE = "Bearer"
 

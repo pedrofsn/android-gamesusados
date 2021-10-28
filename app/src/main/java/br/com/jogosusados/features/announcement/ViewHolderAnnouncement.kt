@@ -1,4 +1,4 @@
-package br.com.jogosusados.announcement
+package br.com.jogosusados.features.announcement
 
 import br.com.jogosusados.databinding.ViewholderAnnouncementBinding
 import br.com.redcode.base.mvvm.databinding.view.BaseViewHolderMVVM
