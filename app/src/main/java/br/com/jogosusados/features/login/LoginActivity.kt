@@ -11,18 +11,20 @@ class LoginActivity : ActivityMVVM<ActivityLoginBinding, LoginViewModel>() {
     override val classViewModel = LoginViewModel::class.java
     override val layout = R.layout.activity_login
 
-    override fun afterOnCreate() {
-
-    }
+    override fun afterOnCreate() = Unit
 
     fun validateForm(view: View?) {
         if (Validate.isFilled(
                 binding.textInputEditTextUsername,
                 binding.textInputEditTextPassword
             )
-        ) {
-            viewModel.login()
-        }
+        ) viewModel.login()
     }
 
+    override fun handleEvent(event: String, obj: Any?) {
+        when (event) {
+            "onLoggedIn" -> if (obj != null && obj is String) toast(obj)
+            else -> super.handleEvent(event, obj)
+        }
+    }
 }

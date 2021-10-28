@@ -2,8 +2,8 @@ package br.com.jogosusados.features.login
 
 import androidx.databinding.ObservableField
 import br.com.jogosusados.features.login.repository.LoginRepository
+import br.com.redcode.easyrestful.library.extensions.process
 import br.com.redcode.easyrestful.library.impl.viewmodel.BaseViewModel
-import kotlinx.coroutines.launch
 import org.koin.core.parameter.parametersOf
 import org.koin.java.KoinJavaComponent.inject
 
@@ -19,7 +19,7 @@ class LoginViewModel : BaseViewModel() {
     fun validateForm() = sendEventToUI("validateForm")
 
     fun login() {
-        launch {
+        process("onLoggedIn") {
             loginRepository.login(
                 email = username.get().orEmpty(),
                 password = password.get().orEmpty()
