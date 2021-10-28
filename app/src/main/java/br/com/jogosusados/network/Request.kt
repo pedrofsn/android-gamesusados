@@ -11,9 +11,7 @@ import java.net.UnknownHostException
 
 object Request {
 
-    infix fun <RetrofitAPI> with(service: RetrofitAPI): RetrofitAPI {
-        return service
-    }
+    infix fun <RetrofitAPI> with(service: RetrofitAPI): RetrofitAPI = service
 
     @Throws
     suspend inline infix fun <TypePayload : Payload<TypeModel>, TypeModel, RetrofitAPI> RetrofitAPI.call(
@@ -27,7 +25,7 @@ object Request {
         }
     }
 
-    infix fun <TypeModel> Pair<TypeModel?, Exception?>.handle(callbackNetworkRequest: CallbackNetworkRequest?): TypeModel? {
+    infix fun <TypeModel> Pair<TypeModel?, Exception?>.handled(callbackNetworkRequest: CallbackNetworkRequest?): TypeModel? {
         if (first != null) {
             return first
         } else if (second != null) {
@@ -58,17 +56,19 @@ object Request {
 
     inline infix fun Pair<Any?, HttpException?>.onFailure(
         crossinline handleFailureManual: ((Throwable) -> Unit),
-    ) {
+    ): Pair<Any?, HttpException?> {
         val httpException = this.second!!
         handleFailureManual.invoke(httpException)
+        return this
     }
 
     inline infix fun Pair<Any?, HttpException?>.onManual(
         crossinline handleErrorManual: ((String?) -> Unit),
-    ) {
+    ): Pair<Any?, HttpException?> {
         val httpException = this.second!!
         val errorBody = httpException.response()?.errorBody()?.string()
         handleErrorManual.invoke(errorBody)
+        return this
     }
 
 
