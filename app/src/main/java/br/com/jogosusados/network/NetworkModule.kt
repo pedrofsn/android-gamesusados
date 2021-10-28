@@ -1,4 +1,4 @@
-package br.com.jogosusados.connection
+package br.com.jogosusados.network
 
 import br.com.jogosusados.BuildConfig
 import okhttp3.Interceptor
@@ -44,7 +44,7 @@ object NetworkModule {
             interceptors.forEach { interceptor -> addInterceptor(interceptor) }
         }.build()
 
-    object ApiNormalTimeOutQualifier : Qualifier {
+    object NetworkRegular : Qualifier {
         override val value: QualifierValue
             get() = "ApiNormal"
     }
@@ -52,7 +52,7 @@ object NetworkModule {
     val instance = module {
         single { createService(createLoggerInterceptor(), ProxyInterceptor()) }
 
-        factory<Retrofit>(ApiNormalTimeOutQualifier) {
+        factory<Retrofit>(NetworkRegular) {
             createRetrofit(
                 httpClient = get(),
                 baseURL = BASE_URL,

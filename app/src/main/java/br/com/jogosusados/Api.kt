@@ -1,7 +1,7 @@
-package br.com.jogosusados.connection
+package br.com.jogosusados
 
-import br.com.jogosusados.connection.bodies.LoginPOST
-import br.com.jogosusados.connection.response.LoginResponse
+import br.com.jogosusados.login.repository.payload.LoginPOST
+import br.com.jogosusados.login.repository.payload.LoginResponse
 import retrofit2.http.Body
 import retrofit2.http.POST
 

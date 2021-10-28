@@ -1,4 +1,4 @@
-package br.com.jogosusados.connection
+package br.com.jogosusados.network
 
 import br.com.redcode.base.interfaces.Payload
 import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest

@@ -1,8 +1,7 @@
-package br.com.jogosusados
+package br.com.jogosusados.login
 
 import androidx.databinding.ObservableField
-import br.com.jogosusados.connection.LoginRepository
-import br.com.jogosusados.connection.Requestable
+import br.com.jogosusados.login.repository.LoginRepository
 import br.com.redcode.easyrestful.library.impl.viewmodel.BaseViewModel
 import kotlinx.coroutines.launch
 import org.koin.core.parameter.parametersOf

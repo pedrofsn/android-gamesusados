@@ -1,7 +1,9 @@
 package br.com.jogosusados.login
 
-import br.com.jogosusados.LoginViewModel
-import br.com.jogosusados.connection.*
+import br.com.jogosusados.Api
+import br.com.jogosusados.login.repository.LoginRepository
+import br.com.jogosusados.login.repository.LoginRepositoryImpl
+import br.com.jogosusados.network.NetworkModule
 import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
 import com.squareup.moshi.Moshi
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -15,7 +17,7 @@ object LoginModule {
         single { Moshi.Builder().build() }
 
         factory {
-            get<Retrofit>(NetworkModule.ApiNormalTimeOutQualifier)
+            get<Retrofit>(NetworkModule.NetworkRegular)
                 .create(Api::class.java)
         }
 

@@ -1,4 +1,4 @@
-package br.com.jogosusados.connection.response
+package br.com.jogosusados.login.repository.payload
 
 import br.com.redcode.base.interfaces.Payload
 

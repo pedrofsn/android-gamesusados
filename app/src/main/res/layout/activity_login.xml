@@ -7,13 +7,13 @@
 
         <variable
             name="viewModel"
-            type="br.com.jogosusados.LoginViewModel" />
+            type="br.com.jogosusados.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".LoginActivity">
+        tools:context=".login.LoginActivity">
 
         <ImageView
             android:id="@+id/imageViewLogo"

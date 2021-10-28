@@ -1,6 +1,7 @@
-package br.com.jogosusados
+package br.com.jogosusados.login
 
 import android.view.View
+import br.com.jogosusados.R
 import br.com.jogosusados.databinding.ActivityLoginBinding
 import br.com.redcode.base.mvvm.restful.databinding.domain.ActivityMVVM
 import br.com.redcode.easyvalidation.Validate

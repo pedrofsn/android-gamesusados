@@ -1,4 +1,4 @@
-package br.com.jogosusados.connection.response
+package br.com.jogosusados.login.repository.payload
 
 
 private const val TYPE = "Bearer"

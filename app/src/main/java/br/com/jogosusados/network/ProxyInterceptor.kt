@@ -1,4 +1,4 @@
-package br.com.jogosusados.connection
+package br.com.jogosusados.network
 
 import br.com.jogosusados.BuildConfig
 import br.com.redcode.base.extensions.extract
