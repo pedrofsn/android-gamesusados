@@ -5,6 +5,8 @@
     <string name="username">Usuário</string>
     <string name="password">Senha</string>
     <string name="to_enter">Entrar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- announcement detail -->
 </resources>

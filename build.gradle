@@ -2,10 +2,11 @@
 buildscript {
 
     ext.versions = [
-            'kotlin'           : '1.4.10',
-            'coroutinesCore'   : '1.3.8',
-            'coroutinesAndroid': '1.3.6',
-            'koin_version'     : '3.1.2'
+            'kotlin'            : '1.4.10',
+            'coroutinesCore'    : '1.3.8',
+            'coroutinesAndroid' : '1.3.6',
+            'koin_version'      : '3.1.2',
+            'navigation_version': '2.3.5'
     ]
 
     ext.deps = [
@@ -20,7 +21,7 @@ buildscript {
             ],
             ui        : [
                     'appcompat': "androidx.appcompat:appcompat:1.3.1",
-                    'material': "com.google.android.material:material:1.4.0"
+                    'material' : "com.google.android.material:material:1.4.0"
             ],
             network   : [
                     'retrofit': "com.squareup.retrofit2:retrofit:2.9.0",
@@ -37,6 +38,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:${versions.navigation_version}"
     }
 }
 

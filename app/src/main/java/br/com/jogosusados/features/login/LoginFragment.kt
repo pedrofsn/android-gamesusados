@@ -2,18 +2,20 @@ package br.com.jogosusados.features.login
 
 import android.view.View
 import br.com.jogosusados.R
-import br.com.jogosusados.databinding.ActivityLoginBinding
-import br.com.redcode.base.mvvm.restful.databinding.domain.ActivityMVVM
+import br.com.jogosusados.databinding.FragmentLoginBinding
+import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
 import br.com.redcode.easyvalidation.Validate
 
-class LoginActivity : ActivityMVVM<ActivityLoginBinding, LoginViewModel>() {
+class LoginFragment : FragmentMVVMDataBinding<FragmentLoginBinding, LoginViewModel>() {
 
     override val classViewModel = LoginViewModel::class.java
-    override val layout = R.layout.activity_login
+    override val layout = R.layout.fragment_login
 
-    override fun afterOnCreate() = Unit
+    override fun afterOnCreate() {
+        binding.button.setOnClickListener { validateForm() }
+    }
 
-    fun validateForm(view: View?) {
+    private fun validateForm() {
         if (Validate.isFilled(
                 binding.textInputEditTextUsername,
                 binding.textInputEditTextPassword
@@ -23,8 +25,13 @@ class LoginActivity : ActivityMVVM<ActivityLoginBinding, LoginViewModel>() {
 
     override fun handleEvent(event: String, obj: Any?) {
         when (event) {
-            "onLoggedIn" -> if (obj != null && obj is String) toast(obj)
+            "onLoggedIn" -> if (obj != null && obj is String) onLoggedIn()
             else -> super.handleEvent(event, obj)
         }
     }
+
+    private fun onLoggedIn() {
+
+    }
+
 }
