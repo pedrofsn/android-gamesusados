@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Androidgamesusados"
         tools:replace="allowBackup">
         <activity
-            android:name=".MainActivity"
+            android:name=".features.navigation.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

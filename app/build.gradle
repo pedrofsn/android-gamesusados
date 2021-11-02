@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
 }
 
@@ -29,7 +30,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
     buildFeatures {
@@ -66,7 +67,6 @@ dependencies {
     // Naviation
     implementation "androidx.navigation:navigation-fragment-ktx:${versions.navigation_version}"
     implementation "androidx.navigation:navigation-ui-ktx:${versions.navigation_version}"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
