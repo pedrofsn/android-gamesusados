@@ -16,8 +16,6 @@ class LoginViewModel : BaseViewModel() {
     val username = ObservableField<String>()
     val password = ObservableField<String>()
 
-    fun validateForm() = sendEventToUI("validateForm")
-
     fun login() {
         process("onLoggedIn") {
             loginRepository.login(
