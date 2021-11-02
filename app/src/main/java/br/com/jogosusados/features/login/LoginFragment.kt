@@ -3,7 +3,6 @@ package br.com.jogosusados.features.login
 import androidx.navigation.fragment.findNavController
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentLoginBinding
-import br.com.jogosusados.features.home.HomeFragment
 import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
 import br.com.redcode.easyvalidation.Validate
 
@@ -17,15 +16,12 @@ class LoginFragment : FragmentMVVMDataBinding<FragmentLoginBinding, LoginViewMod
     }
 
     private fun validateForm() {
-        val directions = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
-        findNavController().navigate(directions)
-/*
         if (Validate.isFilled(
                 binding.textInputEditTextUsername,
                 binding.textInputEditTextPassword
             )
         ) viewModel.login()
-  */  }
+    }
 
     override fun handleEvent(event: String, obj: Any?) {
         when (event) {
@@ -35,7 +31,8 @@ class LoginFragment : FragmentMVVMDataBinding<FragmentLoginBinding, LoginViewMod
     }
 
     private fun onLoggedIn() {
-
+        val directions = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
+        findNavController().navigate(directions)
     }
 
 }
