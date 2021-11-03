@@ -10,25 +10,25 @@
 
     <item
         android:id="@+id/searchFragment"
-        android:icon="@drawable/ic_baseline_person_24"
+        android:icon="@drawable/ic_baseline_search_24"
         android:title=""
         app:showAsAction="always" />
 
     <item
         android:id="@+id/addFragment"
-        android:icon="@drawable/ic_baseline_person_24"
+        android:icon="@drawable/ic_baseline_add_box_24"
         android:title=""
         app:showAsAction="always" />
 
     <item
         android:id="@+id/myFragment"
-        android:icon="@drawable/ic_baseline_person_24"
+        android:icon="@drawable/ic_baseline_addchart_24"
         android:title=""
         app:showAsAction="always" />
 
     <item
         android:id="@+id/settingsFragment"
-        android:icon="@drawable/ic_baseline_person_24"
+        android:icon="@drawable/ic_baseline_settings_24"
         android:title=""
         app:showAsAction="always" />
 </menu>
