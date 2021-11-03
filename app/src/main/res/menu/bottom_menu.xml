@@ -5,30 +5,30 @@
         android:id="@+id/gamesFragment"
         android:checked="true"
         android:icon="@drawable/ic_baseline_videogame_asset_24"
-        android:title="@string/games"
-        app:showAsAction="ifRoom" />
+        android:title=""
+        app:showAsAction="always" />
 
     <item
-        android:id="@+id/loginFragment"
+        android:id="@+id/searchFragment"
         android:icon="@drawable/ic_baseline_person_24"
-        android:title="@string/app_name"
-        app:showAsAction="ifRoom" />
+        android:title=""
+        app:showAsAction="always" />
 
     <item
-        android:id="@+id/bottom_fav"
+        android:id="@+id/addFragment"
         android:icon="@drawable/ic_baseline_person_24"
-        android:title="@string/app_name"
-        app:showAsAction="ifRoom" />
+        android:title=""
+        app:showAsAction="always" />
 
     <item
-        android:id="@+id/bottom_2"
+        android:id="@+id/myFragment"
         android:icon="@drawable/ic_baseline_person_24"
-        android:title="@string/app_name"
-        app:showAsAction="ifRoom" />
+        android:title=""
+        app:showAsAction="always" />
 
     <item
-        android:id="@+id/bottom_3"
+        android:id="@+id/settingsFragment"
         android:icon="@drawable/ic_baseline_person_24"
-        android:title="@string/app_name"
-        app:showAsAction="ifRoom" />
+        android:title=""
+        app:showAsAction="always" />
 </menu>

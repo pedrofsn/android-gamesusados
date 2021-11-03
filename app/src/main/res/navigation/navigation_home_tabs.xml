@@ -2,19 +2,37 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation_graph.xml"
+    android:id="@+id/navigation_home_tabs"
     app:startDestination="@id/gamesFragment">
 
     <fragment
         android:id="@+id/gamesFragment"
         android:name="br.com.jogosusados.features.games.GamesFragment"
-        android:label="fragment_games"
+        android:label="@string/games"
         tools:layout="@layout/fragment_games" />
 
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="br.com.jogosusados.features.login.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        android:id="@+id/searchFragment"
+        android:name="br.com.jogosusados.features.search.SearchFragment"
+        android:label="@string/search"
+        tools:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="br.com.jogosusados.features.add.AddFragment"
+        android:label="@string/to_add"
+        tools:layout="@layout/fragment_add" />
+
+    <fragment
+        android:id="@+id/myFragment"
+        android:name="br.com.jogosusados.features.my.MyFragment"
+        android:label="@string/my_announcements"
+        tools:layout="@layout/fragment_my" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="br.com.jogosusados.features.settings.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_settings" />
 
 </navigation>
