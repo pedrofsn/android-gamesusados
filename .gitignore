@@ -63,5 +63,5 @@ fastlane/readme.md
 /.idea/modules.xml
 /.idea/vcs.xml
 /.idea/.name
-/.idea/.misc.xml
+/.idea/misc.xml
 /.idea/kotlinCodeInsightSettings.xml

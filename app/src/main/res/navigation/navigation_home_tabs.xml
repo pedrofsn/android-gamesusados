@@ -3,11 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph.xml"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/gamesFragment">
+
+    <fragment
+        android:id="@+id/gamesFragment"
+        android:name="br.com.jogosusados.features.games.GamesFragment"
+        android:label="fragment_games"
+        tools:layout="@layout/fragment_games" />
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="br.com.jogosusados.features.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
+
 </navigation>

@@ -1,38 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".features.navigation.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        app:title="@string/app_name"
-        app:titleTextColor="@color/black" />
+    <data>
 
-    <fragment
-        android:id="@+id/nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+        <variable
+            name="viewModel"
+            type="br.com.jogosusados.features.home.HomeViewModel" />
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottom_navigation"
-        android:layout_below="@id/toolbar"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/navigation_home_tabs" />
+        tools:context=".features.navigation.MainActivity">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_menu" />
-    <!--
-    style="@style/Widget.MaterialComponents.BottomNavigationView"
-    app:itemIconTint="@color/bottom_state_colors"
-   app:itemTextColor="@color/bottom_state_colors"
-    -->
-</RelativeLayout>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@color/purple_700"
+            app:title="@string/app_name"
+            app:titleTextAppearance="@style/Theme.AppCompat.Light.DarkActionBar"
+            app:titleTextColor="@android:color/white" />
+
+        <fragment
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/bottom_navigation"
+            android:layout_below="@id/toolbar"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/navigation_home_tabs" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            style="@style/Widget.MaterialComponents.BottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:itemBackground="@color/purple_700"
+            app:itemIconTint="@color/colorAccent"
+            app:itemTextColor="@color/colorAccent"
+            app:menu="@menu/bottom_menu" />
+        <!--
+        style="@style/Widget.MaterialComponents.BottomNavigationView"
+        app:itemIconTint="@color/bottom_state_colors"
+       app:itemTextColor="@color/bottom_state_colors"
+        -->
+    </RelativeLayout>
+</layout>

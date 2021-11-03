@@ -1,44 +1,16 @@
 package br.com.jogosusados.features.home
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import br.com.jogosusados.R
+import br.com.jogosusados.databinding.FragmentHomeBinding
+import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class HomeFragment : FragmentMVVMDataBinding<FragmentHomeBinding, HomeViewModel>() {
 
-class HomeFragment : Fragment() {
+    override val classViewModel = HomeViewModel::class.java
+    override val layout = R.layout.fragment_home
 
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    override fun afterOnCreate() {
+        super.afterOnCreate()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }
