@@ -25,7 +25,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="5"
-            tools:listitem="@layout/viewholder_game_item" />
+            tools:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            tools:listitem="@layout/viewholder_game_item"
+            tools:spanCount="2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
