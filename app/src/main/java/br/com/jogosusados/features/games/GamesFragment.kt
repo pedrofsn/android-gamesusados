@@ -1,5 +1,8 @@
 package br.com.jogosusados.features.games
 
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentGamesBinding
 import br.com.redcode.base.mvvm.extensions.observer
@@ -23,7 +26,8 @@ class GamesFragment : FragmentMVVMDataBinding<FragmentGamesBinding, GamesViewMod
     }
 
     override fun afterOnCreate() {
-        binding.recyclerView.setCustomAdapter(adapter)
+        val layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.recyclerView.setCustomAdapter(adapter, layoutManager)
     }
 
     override fun onResume() {
