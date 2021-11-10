@@ -1,16 +1,15 @@
 <resources>
     <string name="app_name">android-gamesusados</string>
-
-    <!-- login -->
     <string name="username">Usuário</string>
     <string name="password">Senha</string>
     <string name="to_enter">Entrar</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="games">Games</string>
     <string name="to_add">Adicionar</string>
     <string name="settings">Configurações</string>
     <string name="my_announcements">Meus Anúncios</string>
-
-    <!-- announcement detail -->
+    <string name="to_select">Selecionar</string>
+    <string name="value">Valor</string>
+    <string name="money_label">R$ </string>
+    <string name="platform">Plataforma</string>
 </resources>
