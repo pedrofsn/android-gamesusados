@@ -10,91 +10,162 @@
             type="br.com.jogosusados.features.add.AddViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textViewPlatform"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/respiro_visual"
-            android:layout_marginTop="@dimen/respiro_visual"
-            android:layout_marginEnd="@dimen/respiro_visual"
-            android:text="@string/platform"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/respiro_visual">
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chipGroup"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/respiro_visual"
-            android:layout_marginEnd="@dimen/respiro_visual"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPlatform"
-            app:selectionRequired="true"
-            app:singleSelection="true">
-
-        </com.google.android.material.chip.ChipGroup>
-
-        <TextView
-            android:id="@+id/textViewTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/respiro_visual"
-            android:layout_marginTop="@dimen/respiro_visual"
-            android:layout_marginEnd="@dimen/respiro_visual"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chipGroup"
-            tools:text="Shadow ow Colossus" />
-
-        <TextView
-            android:id="@+id/textViewSubtitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceBody2"
-            app:layout_constraintEnd_toEndOf="@+id/textViewTitle"
-            app:layout_constraintStart_toStartOf="@+id/textViewTitle"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
-            tools:text="Playstation 2" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/textViewAction"
-            style="?attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/to_select"
-            app:layout_constraintEnd_toEndOf="@+id/textViewTitle"
-            app:layout_constraintTop_toBottomOf="@+id/textViewSubtitle" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/respiro_visual"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="@dimen/respiro_visual"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewAction"
-            app:prefixText="@string/money_label">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputEditText"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/value"
-                android:inputType="textPersonName" />
+                android:layout_height="match_parent">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:id="@+id/textViewPlatform"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/respiro_visual"
+                    android:layout_marginTop="@dimen/respiro_visual"
+                    android:layout_marginEnd="@dimen/respiro_visual"
+                    android:text="@string/platform"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroup"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/respiro_visual"
+                    android:layout_marginEnd="@dimen/respiro_visual"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewPlatform"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.chip.ChipGroup>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/textViewAdd"
+                    style="?attr/materialButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/respiro_visual"
+                    android:text="@string/to_add"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chipGroup"
+                    tools:visibility="visible" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/materialCardView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/respiro_visual"
+                    android:layout_marginTop="@dimen/respiro_visual"
+                    android:layout_marginEnd="@dimen/respiro_visual"
+                    android:clickable="false"
+                    android:visibility="gone"
+                    app:cardCornerRadius="@dimen/respiro_visual_menor"
+                    app:cardElevation="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chipGroup"
+                    tools:visibility="visible">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/respiro_visual">
+
+                        <ImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="0dp"
+                            android:layout_height="180dp"
+                            android:scaleType="centerInside"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:srcCompat="@tools:sample/avatars" />
+
+                        <TextView
+                            android:id="@+id/textViewTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="@{viewModel.liveData.game.title}"
+                            android:textAppearance="?attr/textAppearanceHeadline6"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/imageView"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView"
+                            tools:text="Shadow ow Colossus" />
+
+                        <TextView
+                            android:id="@+id/textViewSubtitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.liveData.game.subtitle}"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            app:layout_constraintBottom_toTopOf="@+id/textViewAction"
+                            app:layout_constraintEnd_toEndOf="@+id/textViewTitle"
+                            app:layout_constraintStart_toStartOf="@+id/textViewTitle"
+                            app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+                            tools:text="Playstation 2" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/textViewAction"
+                            style="?attr/borderlessButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="9dp"
+                            android:layout_marginBottom="16dp"
+                            android:text="@string/to_change"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/textViewTitle"
+                            app:layout_constraintTop_toBottomOf="@+id/textViewSubtitle" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/respiro_visual"
+                    android:layout_marginTop="@dimen/respiro_visual"
+                    android:layout_marginEnd="@dimen/respiro_visual"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+                    app:prefixText="@string/money_label"
+                    tools:visibility="visible">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textInputEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="0123456789,."
+                        android:hint="@string/value"
+                        android:imeOptions="actionDone"
+                        android:inputType="number" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </layout>

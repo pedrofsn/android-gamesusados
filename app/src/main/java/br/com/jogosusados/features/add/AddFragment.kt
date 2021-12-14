@@ -2,7 +2,11 @@ package br.com.jogosusados.features.add
 
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentAddBinding
+import br.com.redcode.base.extensions.gone
+import br.com.redcode.base.extensions.visible
+import br.com.redcode.base.mvvm.extensions.observer
 import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
+import br.com.redcode.easyglide.library.load
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 
@@ -11,14 +15,32 @@ class AddFragment : FragmentMVVMDataBinding<FragmentAddBinding, AddViewModel>() 
     override val classViewModel = AddViewModel::class.java
     override val layout = R.layout.fragment_add
 
+    private val observer = observer<LabelAddGame> { updateUI(it) }
+
+    override fun setupUI() {
+        super.setupUI()
+        viewModel.liveData.observe(this, observer)
+    }
+
     override fun afterOnCreate() {
-        addChip("Playstation 5")
-        addChip("Xbox One")
-        addChip("Switch")
-        addChip("3DS")
-        addChip("PSP")
-        addChip("N64")
-        binding.chipGroup.setOnCheckedChangeListener { _, checkedId -> toast(checkedId.toString()) }
+        binding.chipGroup.setOnCheckedChangeListener { _, checkedId ->
+            binding.textViewAdd.visible()
+        }
+
+        binding.textViewAdd.setOnClickListener {
+            binding.textViewAdd.gone()
+
+            binding.materialCardView.visible()
+            binding.textInputLayout.visible()
+        }
+
+        viewModel.load()
+    }
+
+    private fun updateUI(labelAddGame: LabelAddGame) {
+        binding.chipGroup.removeAllViews()
+        labelAddGame.platforms.forEach { addChip(it) }
+        binding.imageView.load(labelAddGame.game?.image)
     }
 
     private fun addChip(text: String) {

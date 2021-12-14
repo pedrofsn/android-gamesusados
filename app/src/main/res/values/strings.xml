@@ -12,4 +12,5 @@
     <string name="value">Valor</string>
     <string name="money_label">R$ </string>
     <string name="platform">Plataforma</string>
+    <string name="to_change">Alterar</string>
 </resources>
