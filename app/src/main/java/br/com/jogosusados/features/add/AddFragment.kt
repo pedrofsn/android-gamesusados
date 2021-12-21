@@ -7,6 +7,7 @@ import br.com.redcode.base.extensions.visible
 import br.com.redcode.base.mvvm.extensions.observer
 import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
 import br.com.redcode.easyglide.library.load
+import br.com.redcode.easyvalidation.Validate
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 
@@ -32,6 +33,7 @@ class AddFragment : FragmentMVVMDataBinding<FragmentAddBinding, AddViewModel>() 
 
             binding.materialCardView.visible()
             binding.textInputLayout.visible()
+            binding.button.visible()
         }
 
         viewModel.load()
@@ -54,4 +56,19 @@ class AddFragment : FragmentMVVMDataBinding<FragmentAddBinding, AddViewModel>() 
         }
     }
 
+    override fun handleEvent(event: String, obj: Any?) {
+        when (event) {
+            "requireValue" -> requireValue()
+            "clearErrorValue" -> clearErrorValue()
+            else -> super.handleEvent(event, obj)
+        }
+    }
+
+    private fun requireValue() {
+        Validate.isFilled(binding.textInputEditText)
+    }
+
+    private fun clearErrorValue(){
+        binding.textInputLayout.error = null
+    }
 }

@@ -23,4 +23,14 @@ class AddViewModel : BaseViewModelWithLiveData<LabelAddGame>() {
         val label = LabelAddGame(platforms, game = element, value = "")
         liveData.postValue(label)
     }
+
+    var index = 0
+    fun validate() {
+        index += 1
+        if (index % 2 == 0) {
+            sendEventToUI("requireValue")
+        } else {
+            sendEventToUI("clearErrorValue")
+        }
+    }
 }
