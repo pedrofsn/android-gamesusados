@@ -12,8 +12,11 @@ import org.koin.core.parameter.parametersOf
 
 class LoginViewModel(callback: CallbackNetworkRequest?) : BaseViewModel(), KoinComponent {
 
-    private val loginRepository by inject<LoginRepository>(LoginRepository::class.java) {
-        parametersOf(this)
+    private val loginRepository: LoginRepository by inject {
+        parametersOf(
+            this@LoginViewModel,
+            callback
+        )
     }
 
     val username = ObservableField<String>()
