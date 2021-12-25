@@ -1,6 +1,7 @@
 package br.com.jogosusados.network
 
 import br.com.jogosusados.BuildConfig
+import br.com.jogosusados.features.login.repository.TOKEN_TEMP
 import br.com.redcode.base.extensions.extract
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -15,14 +16,12 @@ class ProxyInterceptor : Interceptor {
         val httpUrlBuilder = originalHttpUrl.newBuilder()
         val httpUrl = httpUrlBuilder.build()
 
-        val token = "@pedrofsn123"
-
         val requestBuilder = original
             .newBuilder()
             .addHeader("Accept", "application/json")
             .addHeader("osversion", extract safe BuildConfig.VERSION_NAME)
             .addHeader("osname", "android")
-            .addHeader("Authorization", "Bearer $token")
+            .addHeader("Authorization", "Bearer $TOKEN_TEMP")
             .url(httpUrl)
 
         val request = requestBuilder.build()

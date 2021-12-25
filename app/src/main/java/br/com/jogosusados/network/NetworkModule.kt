@@ -16,7 +16,7 @@ object NetworkModule {
 
     private const val CONNECT_TIMEOUT_IN_SECONDS: Long = 10
     private const val READ_TIMEOUT_IN_SECONDS: Long = 10
-    private const val BASE_URL = "http://192.168.100.28:8080/"
+    private const val BASE_URL = "http://192.168.100.29:8080/"
 
     private fun createRetrofit(
         httpClient: OkHttpClient,

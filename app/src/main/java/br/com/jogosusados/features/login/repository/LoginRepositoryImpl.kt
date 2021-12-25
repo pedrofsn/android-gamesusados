@@ -15,6 +15,10 @@ class LoginRepositoryImpl(
 
     override suspend fun login(email: String, password: String): LoggedDTO? {
         val body = LoginPOST(email, password)
-        return Request with api call { login(body) } handled callbackNetworkRequest
+        val logged = Request with api call { login(body) } handled callbackNetworkRequest
+        if (logged != null) TOKEN_TEMP = logged.token
+        return logged
     }
 }
+
+var TOKEN_TEMP = ""
