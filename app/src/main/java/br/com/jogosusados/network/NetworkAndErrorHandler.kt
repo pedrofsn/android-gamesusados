@@ -9,18 +9,12 @@ import com.squareup.moshi.Moshi
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-fun PayloadError.toModel(networkError: Int) = ErrorHandled(
-    message = extract safe msg,
-    actionAPI = extract safe acao,
-    networkError = networkError,
-    id = extract safe id
-)
 
 class NetworkAndErrorHandler(
     override val callbackNetworkRequest: CallbackNetworkRequest?
 ) : AbstractNetworkAndErrorHandler(), KoinComponent {
 
-    private val moshi: Moshi by inject(Moshi::class.java)
+    private val moshi: Moshi by inject()
     private val message by lazy { "erro de internet" }
 
     override fun catchedException(exception: Throwable) {
