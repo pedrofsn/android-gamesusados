@@ -1,6 +1,5 @@
 package br.com.jogosusados.features.login.repository
 
-import br.com.jogosusados.features.Api
 import br.com.jogosusados.features.login.repository.payload.LoggedDTO
 import br.com.jogosusados.features.login.repository.payload.LoginPOST
 import br.com.jogosusados.network.Request
@@ -9,7 +8,7 @@ import br.com.jogosusados.network.Request.handled
 import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
 
 class LoginRepositoryImpl(
-    private val api: Api,
+    private val api: LoginAPI,
     override val callbackNetworkRequest: CallbackNetworkRequest?,
 ) : LoginRepository {
 

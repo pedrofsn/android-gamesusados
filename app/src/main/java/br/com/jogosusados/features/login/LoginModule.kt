@@ -1,6 +1,6 @@
 package br.com.jogosusados.features.login
 
-import br.com.jogosusados.features.Api
+import br.com.jogosusados.features.login.repository.LoginAPI
 import br.com.jogosusados.features.login.repository.LoginRepository
 import br.com.jogosusados.features.login.repository.LoginRepositoryImpl
 import br.com.jogosusados.network.NetworkModule

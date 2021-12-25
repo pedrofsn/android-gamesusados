@@ -6,6 +6,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.core.qualifier.Qualifier
 import org.koin.core.qualifier.QualifierValue
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Converter
 import retrofit2.Retrofit
@@ -16,7 +17,7 @@ object NetworkModule {
 
     private const val CONNECT_TIMEOUT_IN_SECONDS: Long = 10
     private const val READ_TIMEOUT_IN_SECONDS: Long = 10
-    private const val BASE_URL = "http://192.168.100.29:8080/"
+    private const val NAME_BASE_URL = "baseURL"
 
     private fun createRetrofit(
         httpClient: OkHttpClient,
@@ -51,11 +52,12 @@ object NetworkModule {
 
     val instance = module {
         single { createService(createLoggerInterceptor(), ProxyInterceptor()) }
+        single(named(NAME_BASE_URL)) { "http://192.168.100.29:8080/" }
 
         factory<Retrofit>(NetworkRegular) {
             createRetrofit(
                 httpClient = get(),
-                baseURL = BASE_URL,
+                baseURL = get(named(NAME_BASE_URL)),
                 converterFactory = MoshiConverterFactory.create()
             )
         }
