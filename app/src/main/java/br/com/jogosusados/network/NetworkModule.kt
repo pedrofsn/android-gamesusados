@@ -1,6 +1,8 @@
 package br.com.jogosusados.network
 
 import br.com.jogosusados.BuildConfig
+import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
+import com.squareup.moshi.Moshi
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -51,6 +53,12 @@ object NetworkModule {
     }
 
     val instance = module {
+        single { Moshi.Builder().build() }
+
+        factory { (callback: CallbackNetworkRequest?) ->
+            NetworkAndErrorHandler(callbackNetworkRequest = callback)
+        }
+
         single { createService(createLoggerInterceptor(), ProxyInterceptor()) }
         single(named(NAME_BASE_URL)) { "http://192.168.100.29:8080/" }
 
