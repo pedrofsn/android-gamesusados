@@ -25,6 +25,18 @@ object Request {
         }
     }
 
+    @Throws
+    suspend inline infix fun <TypePayload : List<Payload<TypeModel>>, TypeModel, RetrofitAPI> RetrofitAPI.callList(
+        crossinline request: suspend RetrofitAPI.() -> TypePayload,
+    ): Pair<List<TypeModel>, Exception?> {
+        return try {
+            val result = request(this)
+            Pair(result.map { it.toModel() }, null)
+        } catch (exception: Exception) {
+            Pair(emptyList(), exception)
+        }
+    }
+
     infix fun <TypeModel> Pair<TypeModel?, Exception?>.handled(callbackNetworkRequest: CallbackNetworkRequest?): TypeModel? {
         if (first != null) {
             return first
@@ -32,9 +44,8 @@ object Request {
             when (val exception = second) {
                 is HttpException -> {
                     val handler by KoinJavaComponent.inject<NetworkAndErrorHandler>(
-                        NetworkAndErrorHandler::class.java) {
-                        parametersOf(callbackNetworkRequest)
-                    }
+                        NetworkAndErrorHandler::class.java
+                    ) { parametersOf(callbackNetworkRequest) }
                     handler.handle(exception)
                     exception.printStackTrace()
                 }
