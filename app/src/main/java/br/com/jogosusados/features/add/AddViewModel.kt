@@ -1,5 +1,6 @@
 package br.com.jogosusados.features.add
 
+import androidx.lifecycle.MutableLiveData
 import br.com.jogosusados.features.add.repository.AddRepository
 import br.com.jogosusados.features.games.list.GameItem
 import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
@@ -12,26 +13,19 @@ import org.koin.core.parameter.parametersOf
 class AddViewModel(callback: CallbackNetworkRequest?) : BaseViewModelWithLiveData<LabelAddGame>(),
     KoinComponent {
 
+    val gameItem = MutableLiveData<GameItem>()
+    val idPlataform = MutableLiveData<Long>()
+
     private val repository: AddRepository by inject {
-        parametersOf(
-            this@AddViewModel,
-            callback
-        )
+        parametersOf(this@AddViewModel, callback)
     }
 
-    override fun load() {
-        process {
-            val platforms = repository.getPlatforms()
-            LabelAddGame(platforms)
-        }
-
-        val element = GameItem(
-            id = 15.toLong(),
-            image = "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSIee3Eac7z5dBDmR6d_pCvnDdU9xhjpv9oTTW7ladJKGD3xTJjYpFK1i6x84I8dJ4uxir2YdTBYwkAgJP3-9c6fi6dGeD6O7Oy-835i72HaeMXMIBEG9Ks8w&usqp=CAE",
-            title = "Ghost of Tsushima",
-            subtitle = "PS4"
-        )
+    override fun load() = process {
+        val platforms = repository.getPlatforms()
+        LabelAddGame(platforms)
     }
+
+    fun updateGame(gameItem: GameItem?) = this.gameItem.postValue(gameItem)
 
     var index = 0
     fun validate() {
@@ -41,5 +35,10 @@ class AddViewModel(callback: CallbackNetworkRequest?) : BaseViewModelWithLiveDat
         } else {
             sendEventToUI("clearErrorValue")
         }
+    }
+
+    fun onPlatformSelected(idPlatform: Long) {
+        idPlataform.postValue(idPlatform)
+        updateGame(null)
     }
 }

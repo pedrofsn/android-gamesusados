@@ -52,6 +52,7 @@
                 </com.google.android.material.chip.ChipGroup>
 
                 <com.google.android.material.button.MaterialButton
+                    app:showOrHide="@{viewModel.idPlataform != null &amp;&amp; viewModel.gameItem == null}"
                     android:id="@+id/textViewAdd"
                     style="?attr/materialButtonStyle"
                     android:layout_width="wrap_content"
@@ -74,6 +75,7 @@
                     android:clickable="false"
                     android:visibility="gone"
                     app:cardCornerRadius="@dimen/respiro_visual_menor"
+                    app:showOrHide="@{viewModel.gameItem != null}"
                     app:cardElevation="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -102,7 +104,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="16dp"
-                            android:text="@{viewModel.liveData.game.title}"
+                            android:text="@{viewModel.gameItem.title}"
                             android:textAppearance="?attr/textAppearanceHeadline6"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="@+id/imageView"
@@ -113,7 +115,7 @@
                             android:id="@+id/textViewSubtitle"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="@{viewModel.liveData.game.subtitle}"
+                            android:text="@{viewModel.gameItem.subtitle}"
                             android:textAppearance="?attr/textAppearanceBody2"
                             app:layout_constraintBottom_toTopOf="@+id/textViewAction"
                             app:layout_constraintEnd_toEndOf="@+id/textViewTitle"
@@ -141,6 +143,7 @@
                     android:id="@+id/textInputLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    app:showOrHide="@{viewModel.gameItem != null}"
                     android:layout_marginStart="@dimen/respiro_visual"
                     android:layout_marginTop="@dimen/respiro_visual"
                     android:layout_marginEnd="@dimen/respiro_visual"
@@ -163,6 +166,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
+                    app:showOrHide="@{viewModel.gameItem != null}"
                     android:id="@+id/button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -1,21 +1,23 @@
 package br.com.jogosusados.features.add
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.core.view.children
 import androidx.databinding.DataBindingUtil
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentAddBinding
+import br.com.jogosusados.domain.getSelectedChip
 import br.com.jogosusados.features.add.data.IdWithTitle
 import br.com.jogosusados.features.add.di.AddModules
-import br.com.jogosusados.features.games.select.GameSelectActivity
+import br.com.jogosusados.features.games.list.GameItem
 import br.com.redcode.base.extensions.gone
 import br.com.redcode.base.extensions.visible
 import br.com.redcode.base.mvvm.extensions.observer
 import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
-import br.com.redcode.easyglide.library.load
 import br.com.redcode.easyvalidation.Validate
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
@@ -34,6 +36,8 @@ class AddFragment : FragmentMVVMDataBinding<FragmentAddBinding, AddViewModel>() 
     }
 
     private val observer = observer<LabelAddGame> { updateUI(it) }
+
+    private lateinit var onGameSelected: ActivityResultLauncher<Long>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         loadKoinModules(AddModules.instance)
@@ -58,41 +62,34 @@ class AddFragment : FragmentMVVMDataBinding<FragmentAddBinding, AddViewModel>() 
 
     override fun afterOnCreate() {
         binding.chipGroup.setOnCheckedChangeListener { _, checkedId ->
-            binding.textViewAdd.visible()
+            val idPlatform = binding.chipGroup.getSelectedChip(checkedId).tag.toString().toLong()
+            viewModel.onPlatformSelected(idPlatform)
         }
 
         binding.textViewAdd.setOnClickListener {
-            binding.textViewAdd.gone()
-
-            binding.materialCardView.visible()
-            binding.textInputLayout.visible()
-            binding.button.visible()
-
             openScreenToSelectGame()
-
             binding.textViewAction.setOnClickListener { openScreenToSelectGame() }
         }
+
+        registerCallbackToSelectGame()
 
         viewModel.load()
     }
 
-    private fun openScreenToSelectGame() {
-        /*  registerForActivityResult(ActivityResultContracts.GetContent()) { uri : Uri? ->
-
-          }
-          startActivityForResult()
-          GameSelectActivity */
-
-        val intent = Intent(requireActivity(), GameSelectActivity::class.java).apply {
-            putExtra("idPlatform", 1L)
+    private fun registerCallbackToSelectGame() {
+        onGameSelected = registerForActivityResult(SelectGameContract()) { gameItem: GameItem? ->
+            viewModel.updateGame(gameItem)
         }
-        startActivity(intent)
+    }
+
+    private fun openScreenToSelectGame() {
+        val idPlatform = viewModel.idPlataform.value
+        onGameSelected.launch(idPlatform)
     }
 
     private fun updateUI(labelAddGame: LabelAddGame) {
         binding.chipGroup.removeAllViews()
         labelAddGame.platforms.forEach { addChip(it) }
-        binding.imageView.load(labelAddGame.game?.image)
     }
 
     private fun addChip(idWithTitle: IdWithTitle) {
