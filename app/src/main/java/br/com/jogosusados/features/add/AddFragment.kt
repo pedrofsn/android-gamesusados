@@ -61,6 +61,12 @@ class AddFragment : FragmentMVVMDataBinding<FragmentAddBinding, AddViewModel>() 
     }
 
     override fun afterOnCreate() {
+        registerCallbackToSelectGame()
+        setupListeners()
+        viewModel.load()
+    }
+
+    private fun setupListeners() {
         binding.chipGroup.setOnCheckedChangeListener { _, checkedId ->
             val idPlatform = binding.chipGroup.getSelectedChip(checkedId).tag.toString().toLong()
             viewModel.onPlatformSelected(idPlatform)
@@ -70,10 +76,6 @@ class AddFragment : FragmentMVVMDataBinding<FragmentAddBinding, AddViewModel>() 
             openScreenToSelectGame()
             binding.textViewAction.setOnClickListener { openScreenToSelectGame() }
         }
-
-        registerCallbackToSelectGame()
-
-        viewModel.load()
     }
 
     private fun registerCallbackToSelectGame() {
