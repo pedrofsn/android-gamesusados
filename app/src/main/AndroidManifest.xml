@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Androidgamesusados"
         tools:replace="allowBackup">
+
         <activity
             android:name=".features.navigation.MainActivity"
             android:exported="true"
@@ -24,6 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".features.announcement.AnnouncementActivity" />
+        <activity android:name=".features.games.select.GameSelectActivity" />
     </application>
 
 </manifest>

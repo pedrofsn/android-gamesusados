@@ -1,4 +1,4 @@
-package br.com.jogosusados.features.games
+package br.com.jogosusados.features.games.list
 
 import br.com.jogosusados.databinding.ViewholderGameItemBinding
 import br.com.redcode.base.mvvm.databinding.view.BaseViewHolderMVVM

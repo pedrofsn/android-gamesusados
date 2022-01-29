@@ -1,4 +1,4 @@
-package br.com.jogosusados.features.games
+package br.com.jogosusados.features.games.list
 
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.ViewholderGameItemBinding

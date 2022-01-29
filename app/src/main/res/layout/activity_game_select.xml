@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="br.com.jogosusados.features.games.list.GamesViewModel" />
+            type="br.com.jogosusados.features.games.select.GameSelectViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,8 +18,6 @@
             android:id="@+id/recyclerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:clipToPadding="false"
-            android:paddingBottom="@dimen/respiro_visual_menor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,5 +28,4 @@
             tools:spanCount="2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

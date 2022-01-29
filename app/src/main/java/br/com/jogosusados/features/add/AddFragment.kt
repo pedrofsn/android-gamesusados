@@ -1,5 +1,6 @@
 package br.com.jogosusados.features.add
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentAddBinding
 import br.com.jogosusados.features.add.data.IdWithTitle
 import br.com.jogosusados.features.add.di.AddModules
+import br.com.jogosusados.features.games.select.GameSelectActivity
 import br.com.redcode.base.extensions.gone
 import br.com.redcode.base.extensions.visible
 import br.com.redcode.base.mvvm.extensions.observer
@@ -49,7 +51,6 @@ class AddFragment : FragmentMVVMDataBinding<FragmentAddBinding, AddViewModel>() 
         return binding.root
     }
 
-
     override fun setupUI() {
         super.setupUI()
         viewModel.liveData.observe(this, observer)
@@ -66,9 +67,26 @@ class AddFragment : FragmentMVVMDataBinding<FragmentAddBinding, AddViewModel>() 
             binding.materialCardView.visible()
             binding.textInputLayout.visible()
             binding.button.visible()
+
+            openScreenToSelectGame()
+
+            binding.textViewAction.setOnClickListener { openScreenToSelectGame() }
         }
 
         viewModel.load()
+    }
+
+    private fun openScreenToSelectGame() {
+        /*  registerForActivityResult(ActivityResultContracts.GetContent()) { uri : Uri? ->
+
+          }
+          startActivityForResult()
+          GameSelectActivity */
+
+        val intent = Intent(requireActivity(), GameSelectActivity::class.java).apply {
+            putExtra("idPlatform", 1L)
+        }
+        startActivity(intent)
     }
 
     private fun updateUI(labelAddGame: LabelAddGame) {
@@ -78,10 +96,9 @@ class AddFragment : FragmentMVVMDataBinding<FragmentAddBinding, AddViewModel>() 
     }
 
     private fun addChip(idWithTitle: IdWithTitle) {
-        val context = requireContext()
         val styleChoice = R.style.Widget_MaterialComponents_Chip_Choice
-        Chip(context).apply {
-            val chipDrawable = ChipDrawable.createFromAttributes(context, null, 0, styleChoice);
+        Chip(requireContext()).apply {
+            val chipDrawable = ChipDrawable.createFromAttributes(context, null, 0, styleChoice)
             setChipDrawable(chipDrawable)
             this.text = idWithTitle.title
             this.tag = idWithTitle.id

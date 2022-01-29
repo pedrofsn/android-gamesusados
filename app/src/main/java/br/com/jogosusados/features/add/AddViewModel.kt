@@ -1,7 +1,7 @@
 package br.com.jogosusados.features.add
 
 import br.com.jogosusados.features.add.repository.AddRepository
-import br.com.jogosusados.features.games.GameItem
+import br.com.jogosusados.features.games.list.GameItem
 import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
 import br.com.redcode.easyrestful.library.extensions.process
 import br.com.redcode.easyrestful.library.impl.viewmodel.BaseViewModelWithLiveData

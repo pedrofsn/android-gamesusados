@@ -1,10 +1,10 @@
-package br.com.jogosusados.features.games
+package br.com.jogosusados.features.games.list
 
+import android.content.Intent
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentGamesBinding
+import br.com.jogosusados.features.games.select.GameSelectActivity
 import br.com.redcode.base.mvvm.extensions.observer
 import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
 import br.com.redcode.easyrecyclerview.library.extension_functions.setCustomAdapter
@@ -17,7 +17,10 @@ class GamesFragment : FragmentMVVMDataBinding<FragmentGamesBinding, GamesViewMod
     private val observer = observer<LabelGames> { updateUI(it) }
 
     private val adapter = AdapterGameItem { item, position ->
-
+        val intent = Intent(requireActivity(), GameSelectActivity::class.java).apply {
+            putExtra("idPlatform", 1L)
+        }
+        startActivity(intent)
     }
 
     override fun setupUI() {

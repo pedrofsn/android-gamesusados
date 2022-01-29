@@ -3,8 +3,8 @@ package br.com.jogosusados.features.search
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentSearchBinding
-import br.com.jogosusados.features.games.AdapterGameItem
-import br.com.jogosusados.features.games.LabelGames
+import br.com.jogosusados.features.games.list.AdapterGameItem
+import br.com.jogosusados.features.games.list.LabelGames
 import br.com.redcode.base.mvvm.extensions.observer
 import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
 import br.com.redcode.easyrecyclerview.library.extension_functions.setCustomAdapter

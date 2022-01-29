@@ -22,4 +22,10 @@
         android:name="br.com.jogosusados.features.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/selectGamesFragment"
+        android:name="br.com.jogosusados.features.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
 </navigation>

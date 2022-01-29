@@ -7,7 +7,7 @@ import br.com.jogosusados.network.Request.handled
 import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
 
 class AddRepositoryImpl(
-    private val api: GamesAPI,
+    private val api: PlatformsAPI,
     override val callbackNetworkRequest: CallbackNetworkRequest?
 ) : AddRepository {
     override suspend fun getPlatforms(): List<IdWithTitle> {
