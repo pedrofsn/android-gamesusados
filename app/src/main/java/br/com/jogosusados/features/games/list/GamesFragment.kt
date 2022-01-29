@@ -1,10 +1,11 @@
 package br.com.jogosusados.features.games.list
 
-import android.content.Intent
+import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentGamesBinding
-import br.com.jogosusados.features.games.select.GameSelectActivity
+import br.com.jogosusados.features.add.SelectGameContract
 import br.com.redcode.base.mvvm.extensions.observer
 import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
 import br.com.redcode.easyrecyclerview.library.extension_functions.setCustomAdapter
@@ -16,11 +17,15 @@ class GamesFragment : FragmentMVVMDataBinding<FragmentGamesBinding, GamesViewMod
 
     private val observer = observer<LabelGames> { updateUI(it) }
 
-    private val adapter = AdapterGameItem { item, position ->
-        val intent = Intent(requireActivity(), GameSelectActivity::class.java).apply {
-            putExtra("idPlatform", 1L)
+    private val register: ActivityResultLauncher<Long> by lazy {
+        registerForActivityResult(SelectGameContract()) { gameItem: GameItem? ->
+            Toast.makeText(requireActivity(), "gameItem: ${gameItem?.title}", Toast.LENGTH_SHORT)
+                .show()
         }
-        startActivity(intent)
+    }
+
+    private val adapter = AdapterGameItem { item, position ->
+        register.launch(1L)
     }
 
     override fun setupUI() {
@@ -31,6 +36,7 @@ class GamesFragment : FragmentMVVMDataBinding<FragmentGamesBinding, GamesViewMod
     override fun afterOnCreate() {
         val layoutManager = GridLayoutManager(requireContext(), 2)
         binding.recyclerView.setCustomAdapter(adapter, layoutManager)
+        register
     }
 
     override fun onResume() {

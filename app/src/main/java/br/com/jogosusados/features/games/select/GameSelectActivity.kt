@@ -1,5 +1,6 @@
 package br.com.jogosusados.features.games.select
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
@@ -25,10 +26,13 @@ class GameSelectActivity : ActivityMVVM<ActivityGameSelectBinding, GameSelectVie
     }
 
     private val observer = observer<List<GameItem>> { updateUI(it) }
-    private val idPlatform by lazy { intent?.getLongExtra("idPlatform", -1) ?: -1L }
+    private val idPlatform by lazy { intent?.getLongExtra(TAG_ID_PLATFORM, -1) ?: -1L }
 
-    private val adapter = AdapterGameItem { item, position ->
-
+    private val adapter = AdapterGameItem { item, _ ->
+        val data = Intent()
+        data.putExtra(TAG_GAME_ITEM, item)
+        setResult(RESULT_OK, data)
+        finish()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,6 +74,11 @@ class GameSelectActivity : ActivityMVVM<ActivityGameSelectBinding, GameSelectVie
     override fun onDestroy() {
         super.onDestroy()
         unloadKoinModules(GameSelectModules.instance)
+    }
+
+    companion object {
+        const val TAG_ID_PLATFORM = "idPlataform"
+        const val TAG_GAME_ITEM = "gameITem"
     }
 
 }

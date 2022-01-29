@@ -20,4 +20,4 @@ class LoginRepositoryImpl(
     }
 }
 
-var TOKEN_TEMP = ""
+var TOKEN_TEMP = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHYW1lcyBVc2Fkb3MiLCJzdWIiOiIxIiwiaWF0IjoxNjQzNDY3NDUxLCJleHAiOjE2NDM1NTM4NTF9.brSv2C_KrEm-aNDH01Fom2fJfZ_e7Jw6jGz8t8TkNNM"
