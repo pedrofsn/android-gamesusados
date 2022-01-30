@@ -2,6 +2,7 @@ package br.com.jogosusados
 
 import android.app.Application
 import br.com.jogosusados.network.NetworkModule
+import org.koin.android.ext.koin.androidLogger
 import org.koin.core.component.KoinComponent
 import org.koin.core.context.GlobalContext.startKoin
 
@@ -16,7 +17,7 @@ class App : Application(), KoinComponent {
 
     private fun initializeDependencies() {
         startKoin {
-            printLogger()
+            androidLogger(org.koin.core.logger.Level.ERROR)
             modules(modules)
         }
     }
