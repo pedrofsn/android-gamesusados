@@ -45,12 +45,13 @@ dependencies {
     // UI
     implementation deps.ui.appcompat
     implementation deps.ui.material
+    implementation "com.github.pedrofsn:easymask:1.0.1.3"
 
     // Base code
     implementation 'com.github.pedrofsn.base-redcode:mvvm-restful-databinding:0.0.9'
 
     // Easy Validation
-    implementation 'com.github.pedrofsn:easyvalidation:1.0.4'
+    implementation 'com.github.pedrofsn:EasyValidation:1.0.4'
 
     // Network
     implementation deps.network.retrofit
