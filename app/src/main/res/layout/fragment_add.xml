@@ -52,7 +52,6 @@
                 </com.google.android.material.chip.ChipGroup>
 
                 <com.google.android.material.button.MaterialButton
-                    app:showOrHide="@{viewModel.idPlataform != null &amp;&amp; viewModel.gameItem == null}"
                     android:id="@+id/textViewAdd"
                     style="?attr/materialButtonStyle"
                     android:layout_width="wrap_content"
@@ -63,6 +62,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/chipGroup"
+                    app:showOrHide="@{viewModel.idPlataform != null &amp;&amp; viewModel.gameItem == null}"
                     tools:visibility="visible" />
 
                 <com.google.android.material.card.MaterialCardView
@@ -75,11 +75,11 @@
                     android:clickable="false"
                     android:visibility="gone"
                     app:cardCornerRadius="@dimen/respiro_visual_menor"
-                    app:showOrHide="@{viewModel.gameItem != null}"
                     app:cardElevation="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/chipGroup"
+                    app:showOrHide="@{viewModel.gameItem != null}"
                     tools:visibility="visible">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -143,7 +143,6 @@
                     android:id="@+id/textInputLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:showOrHide="@{viewModel.gameItem != null}"
                     android:layout_marginStart="@dimen/respiro_visual"
                     android:layout_marginTop="@dimen/respiro_visual"
                     android:layout_marginEnd="@dimen/respiro_visual"
@@ -152,6 +151,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/materialCardView"
                     app:prefixText="@string/money_label"
+                    app:showOrHide="@{viewModel.gameItem != null}"
                     tools:visibility="visible">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -161,12 +161,12 @@
                         android:digits="0123456789,."
                         android:hint="@string/value"
                         android:imeOptions="actionDone"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:text="@={viewModel.value}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
-                    app:showOrHide="@{viewModel.gameItem != null}"
                     android:id="@+id/button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -177,6 +177,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textInputLayout"
+                    app:showOrHide="@{viewModel.gameItem != null}"
                     tools:visibility="visible" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

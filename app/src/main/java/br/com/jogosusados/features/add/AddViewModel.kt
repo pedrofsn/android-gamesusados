@@ -1,6 +1,8 @@
 package br.com.jogosusados.features.add
 
+import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
+import br.com.concrete.canarinho.formatador.Formatador.VALOR_COM_SIMBOLO
 import br.com.jogosusados.features.add.repository.AddRepository
 import br.com.jogosusados.features.games.list.GameItem
 import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
@@ -15,6 +17,7 @@ class AddViewModel(callback: CallbackNetworkRequest?) : BaseViewModelWithLiveDat
 
     val gameItem = MutableLiveData<GameItem>()
     val idPlataform = MutableLiveData<Long>()
+    val value = ObservableField<String>()
 
     private val repository: AddRepository by inject {
         parametersOf(this@AddViewModel, callback)
@@ -25,20 +28,32 @@ class AddViewModel(callback: CallbackNetworkRequest?) : BaseViewModelWithLiveDat
         LabelAddGame(platforms)
     }
 
+    fun updatePlatform(idPlatform: Long?) = this.idPlataform.postValue(idPlatform)
     fun updateGame(gameItem: GameItem?) = this.gameItem.postValue(gameItem)
 
-    var index = 0
+    fun onPlatformSelected(idPlatform: Long) {
+        updatePlatform(idPlatform)
+        updateGame(null)
+    }
+
     fun validate() {
-        index += 1
-        if (index % 2 == 0) {
-            sendEventToUI("requireValue")
-        } else {
+        val money = value.get()?.trim().orEmpty()
+        if (money.isNotBlank()) {
             sendEventToUI("clearErrorValue")
+            val moneyUnformatted = VALOR_COM_SIMBOLO.desformata(money)
+            gameItem.value?.let { game -> tryToSaveGame(game, moneyUnformatted) }
+        } else {
+            sendEventToUI("requireValue")
         }
     }
 
-    fun onPlatformSelected(idPlatform: Long) {
-        idPlataform.postValue(idPlatform)
-        updateGame(null)
+    private fun tryToSaveGame(game: GameItem, money: String) = process("onGameAnnouncementSaved") {
+        val result = repository.saveAnnouncement(idGame = game.id, value = money)
+        if (result != null) {
+            updateGame(null)
+            updatePlatform(null)
+            value.set("")
+        }
+        return@process result
     }
 }

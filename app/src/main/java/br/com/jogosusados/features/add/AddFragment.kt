@@ -4,20 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
-import androidx.core.view.children
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentAddBinding
+import br.com.jogosusados.domain.addSafeMarginInPrefix
 import br.com.jogosusados.domain.getSelectedChip
+import br.com.jogosusados.features.add.data.GameAnnouncement
 import br.com.jogosusados.features.add.data.IdWithTitle
 import br.com.jogosusados.features.add.di.AddModules
 import br.com.jogosusados.features.games.list.GameItem
-import br.com.redcode.base.extensions.gone
-import br.com.redcode.base.extensions.visible
 import br.com.redcode.base.mvvm.extensions.observer
 import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
+import br.com.redcode.easymask.handleMoney
 import br.com.redcode.easyvalidation.Validate
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
@@ -63,6 +64,8 @@ class AddFragment : FragmentMVVMDataBinding<FragmentAddBinding, AddViewModel>() 
     override fun afterOnCreate() {
         registerCallbackToSelectGame()
         setupListeners()
+        binding.textInputEditText.handleMoney(hasSymbol = false)
+        binding.textInputLayout.addSafeMarginInPrefix(requireActivity() as AppCompatActivity)
         viewModel.load()
     }
 
@@ -109,7 +112,14 @@ class AddFragment : FragmentMVVMDataBinding<FragmentAddBinding, AddViewModel>() 
         when (event) {
             "requireValue" -> requireValue()
             "clearErrorValue" -> clearErrorValue()
+            "onGameAnnouncementSaved" -> onGameAnnouncementSaved(obj)
             else -> super.handleEvent(event, obj)
+        }
+    }
+
+    private fun onGameAnnouncementSaved(obj: Any?) {
+        if(obj != null && obj is GameAnnouncement) {
+            findNavController().navigate(R.id.myFragment)
         }
     }
 
