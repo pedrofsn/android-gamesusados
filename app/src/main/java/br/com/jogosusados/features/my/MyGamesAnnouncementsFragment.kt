@@ -64,6 +64,7 @@ class MyGamesAnnouncementsFragment :
         super.onViewCreated(view, savedInstanceState)
         viewModel.load()
     }
+
     private fun updateUI(label: LabelMyGamesAnnouncements) {
         adapter.setCustomList(label.games)
         hideProgress()

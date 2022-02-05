@@ -13,7 +13,7 @@ suspend fun <TypePayload : Payload<TypeModel>, TypeModel, RetrofitAPI> Requestab
     //callbackNetworkRequest: CallbackNetworkRequest? = null,
     handleErrorManual: ((String?) -> Unit)? = null,
     handleFailureManual: ((Throwable) -> Unit)? = null,
-    service : RetrofitAPI,
+    service: RetrofitAPI,
     request: suspend RetrofitAPI.() -> TypePayload
 ): TypeModel? {
     return try {

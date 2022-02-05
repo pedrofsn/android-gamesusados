@@ -118,7 +118,7 @@ class AddFragment : FragmentMVVMDataBinding<FragmentAddBinding, AddViewModel>() 
     }
 
     private fun onGameAnnouncementSaved(obj: Any?) {
-        if(obj != null && obj is GameAnnouncement) {
+        if (obj != null && obj is GameAnnouncement) {
             findNavController().navigate(R.id.myFragment)
         }
     }

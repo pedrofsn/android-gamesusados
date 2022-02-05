@@ -9,7 +9,7 @@ class AdapterGameItem(override var click: ((GameItem, Int) -> Unit)?) :
 
     override val layout: Int = R.layout.viewholder_game_item
 
-    override fun getViewHolder(binding: ViewholderGameItemBinding) : ViewHolderGameItem {
+    override fun getViewHolder(binding: ViewholderGameItemBinding): ViewHolderGameItem {
         return ViewHolderGameItem(binding)
     }
 
