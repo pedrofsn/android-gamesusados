@@ -66,8 +66,8 @@ class LoginFragment : FragmentMVVMDataBinding<FragmentLoginBinding, LoginViewMod
     }
 
     override fun onDestroy() {
-        unloadKoinModules(LoginModule.instance)
         super.onDestroy()
+        unloadKoinModules(LoginModule.instance)
     }
 
 }
