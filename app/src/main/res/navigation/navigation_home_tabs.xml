@@ -25,9 +25,9 @@
 
     <fragment
         android:id="@+id/myFragment"
-        android:name="br.com.jogosusados.features.my.MyFragment"
+        android:name="br.com.jogosusados.features.my.MyGamesAnnouncementsFragment"
         android:label="@string/my_announcements"
-        tools:layout="@layout/fragment_my" />
+        tools:layout="@layout/fragment_my_games_announcements" />
 
     <fragment
         android:id="@+id/settingsFragment"

@@ -69,6 +69,12 @@ class AddFragment : FragmentMVVMDataBinding<FragmentAddBinding, AddViewModel>() 
         viewModel.load()
     }
 
+    private fun registerCallbackToSelectGame() {
+        onGameSelected = registerForActivityResult(SelectGameContract()) { gameItem: GameItem? ->
+            viewModel.updateGame(gameItem)
+        }
+    }
+
     private fun setupListeners() {
         binding.chipGroup.setOnCheckedChangeListener { _, checkedId ->
             val idPlatform = binding.chipGroup.getSelectedChip(checkedId).tag.toString().toLong()
@@ -78,12 +84,6 @@ class AddFragment : FragmentMVVMDataBinding<FragmentAddBinding, AddViewModel>() 
         binding.textViewAdd.setOnClickListener {
             openScreenToSelectGame()
             binding.textViewAction.setOnClickListener { openScreenToSelectGame() }
-        }
-    }
-
-    private fun registerCallbackToSelectGame() {
-        onGameSelected = registerForActivityResult(SelectGameContract()) { gameItem: GameItem? ->
-            viewModel.updateGame(gameItem)
         }
     }
 
@@ -132,7 +132,7 @@ class AddFragment : FragmentMVVMDataBinding<FragmentAddBinding, AddViewModel>() 
     }
 
     override fun onDestroy() {
-        unloadKoinModules(AddModules.instance)
         super.onDestroy()
+        unloadKoinModules(AddModules.instance)
     }
 }
