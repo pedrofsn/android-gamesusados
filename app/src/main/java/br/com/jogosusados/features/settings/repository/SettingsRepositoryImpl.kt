@@ -1,5 +1,6 @@
 package br.com.jogosusados.features.settings.repository
 
+import br.com.jogosusados.features.settings.data.Profile
 import br.com.jogosusados.network.Request
 import br.com.jogosusados.network.Request.call
 import br.com.jogosusados.network.Request.handled

@@ -1,5 +1,6 @@
 package br.com.jogosusados.features.settings.repository
 
+import br.com.jogosusados.features.settings.repository.payload.ProfileDTO
 import retrofit2.http.GET
 
 interface SettingsAPI {

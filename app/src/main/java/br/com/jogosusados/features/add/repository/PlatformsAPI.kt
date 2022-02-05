@@ -1,7 +1,7 @@
 package br.com.jogosusados.features.add.repository
 
-import br.com.jogosusados.features.add.data.GameAnnouncementPayload
-import br.com.jogosusados.features.add.data.IdWithTitlePayload
+import br.com.jogosusados.features.add.repository.payload.GameAnnouncementPayload
+import br.com.jogosusados.features.add.repository.payload.IdWithTitlePayload
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path

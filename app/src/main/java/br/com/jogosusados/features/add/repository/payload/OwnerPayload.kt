@@ -1,5 +1,6 @@
-package br.com.jogosusados.features.add.data
+package br.com.jogosusados.features.add.repository.payload
 
+import br.com.jogosusados.features.add.data.Owner
 import br.com.redcode.base.extensions.extract
 import br.com.redcode.base.interfaces.Payload
 

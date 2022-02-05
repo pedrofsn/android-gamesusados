@@ -1,6 +1,6 @@
 package br.com.jogosusados.features.settings
 
-import br.com.jogosusados.features.settings.repository.Profile
+import br.com.jogosusados.features.settings.data.Profile
 import br.com.jogosusados.features.settings.repository.SettingsRepository
 import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
 import br.com.redcode.easyrestful.library.extensions.process

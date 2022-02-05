@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentSettingsBinding
 import br.com.jogosusados.features.settings.di.SettingsModule
-import br.com.jogosusados.features.settings.repository.Profile
+import br.com.jogosusados.features.settings.data.Profile
 import br.com.redcode.base.mvvm.extensions.observer
 import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel

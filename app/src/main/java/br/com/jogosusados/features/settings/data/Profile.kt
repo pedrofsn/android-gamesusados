@@ -1,4 +1,4 @@
-package br.com.jogosusados.features.settings.repository
+package br.com.jogosusados.features.settings.data
 
 data class Profile(
     val name: String,
