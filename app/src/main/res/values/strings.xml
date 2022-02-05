@@ -14,4 +14,6 @@
     <string name="platform">Plataforma</string>
     <string name="to_change">Alterar</string>
     <string name="to_save">Salvar</string>
+    <string name="name">Nome</string>
+    <string name="type">Tipo</string>
 </resources>
