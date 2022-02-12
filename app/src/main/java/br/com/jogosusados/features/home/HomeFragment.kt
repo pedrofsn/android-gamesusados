@@ -19,6 +19,11 @@ class HomeFragment : FragmentMVVMDataBinding<FragmentHomeBinding, HomeViewModel>
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         NavigationUI.setupWithNavController(binding.toolbar, navController, appBarConfiguration)
         binding.bottomNavigationView.setupWithNavController(navController)
+        avoidReselection()
+    }
+
+    private fun avoidReselection() {
+        binding.bottomNavigationView.setOnItemReselectedListener { }
     }
 
 }
