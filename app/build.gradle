@@ -42,8 +42,11 @@ android {
 dependencies {
     implementation 'androidx.core:core-ktx:1.6.0'
 
+    // AndroidX
+    implementation deps.androidx.appcompat
+    implementation deps.androidx.pagination
+
     // UI
-    implementation deps.ui.appcompat
     implementation deps.ui.material
     implementation "com.github.pedrofsn:easymask:1.0.1.3"
 
