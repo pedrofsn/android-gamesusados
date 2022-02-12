@@ -1,24 +1,30 @@
 package br.com.jogosusados.features.search
 
-import br.com.jogosusados.features.games.list.GameItem
-import br.com.jogosusados.features.games.list.LabelGames
-import br.com.redcode.easyrestful.library.impl.viewmodel.BaseViewModelWithLiveData
+import androidx.databinding.ObservableField
+import br.com.jogosusados.features.search.domain.Pagination
+import br.com.jogosusados.features.search.repository.SearchGamesRepository
+import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
+import br.com.redcode.easyrestful.library.impl.viewmodel.BaseViewModel
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+import org.koin.core.parameter.parametersOf
 
-class SearchViewModel : BaseViewModelWithLiveData<LabelGames>() {
+class SearchViewModel(callback: CallbackNetworkRequest?) : BaseViewModel(), KoinComponent {
 
-    override fun load() {
-        val games = arrayListOf<GameItem>()
-        for (i in 1..10) {
-            games.add(
-                GameItem(
-                    id = i.toLong(),
-                    image = "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSIee3Eac7z5dBDmR6d_pCvnDdU9xhjpv9oTTW7ladJKGD3xTJjYpFK1i6x84I8dJ4uxir2YdTBYwkAgJP3-9c6fi6dGeD6O7Oy-835i72HaeMXMIBEG9Ks8w&usqp=CAE",
-                    title = "Ghost of Tsushima",
-                    subtitle = "PS4"
-                )
-            )
-        }
-        liveData.postValue(LabelGames(games))
+    val title = ObservableField<String>()
+    val showEmptyView = ObservableField(false)
+
+    private val sarchGamesRepository: SearchGamesRepository by inject {
+        parametersOf(this@SearchViewModel, callback)
     }
 
+    val pagination by lazy {
+        return@lazy Pagination(
+            scope = this,
+            onPreExecute = { showProgressbar(true) },
+            doInBackground = { _, page -> sarchGamesRepository.searchGames(page, title.get()) },
+            onPostExecute = { _, _ -> showProgressbar(false) },
+            handleEmptyData = { show -> showEmptyView.set(show) }
+        )
+    }
 }
