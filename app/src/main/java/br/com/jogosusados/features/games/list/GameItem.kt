@@ -1,12 +1,13 @@
 package br.com.jogosusados.features.games.list
 
 import android.os.Parcelable
+import br.com.jogosusados.features.search.domain.WithID
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class GameItem(
-    val id: Long,
+    override val id: Long,
     val image: String,
     val title: String,
     val subtitle: String
-) : Parcelable
+) : Parcelable, WithID
