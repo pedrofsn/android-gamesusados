@@ -10,7 +10,7 @@ import br.com.jogosusados.network.Request.handled
 import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
 import com.squareup.moshi.Moshi
 
-class RemoteInteractor(
+class SettingsRemoteInteractorImpl(
     private val storage: Storage,
     private val moshi: Moshi,
     private val api: SettingsAPI,

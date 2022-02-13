@@ -5,7 +5,7 @@ import br.com.jogosusados.features.settings.repository.interactor.SettingsConsta
 import br.com.jogosusados.features.storage.Storage
 import com.squareup.moshi.Moshi
 
-class LocalInteractor(
+class SettingsLocalInteractorImpl(
     private val storage: Storage,
     private val moshi: Moshi
 ) : SettingsLocalInteractor {
