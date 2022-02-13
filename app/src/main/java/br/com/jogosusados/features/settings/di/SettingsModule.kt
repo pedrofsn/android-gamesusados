@@ -19,6 +19,8 @@ object SettingsModule {
         factory<SettingsRepository> { (callback: CallbackNetworkRequest?) ->
             SettingsRepositoryImpl(
                 api = get(),
+                storage = get(),
+                moshi = get(),
                 callbackNetworkRequest = callback
             )
         }
