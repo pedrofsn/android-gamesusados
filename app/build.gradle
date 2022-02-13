@@ -7,12 +7,12 @@ plugins {
 }
 
 android {
-    compileSdk 30
+    compileSdk versions.android_compile_sdk
 
     defaultConfig {
         applicationId "br.com.jogosusados"
-        minSdk 21
-        targetSdk 30
+        minSdk versions.android_min_sdk
+        targetSdk versions.android_target_sdk
         versionCode 1
         versionName "1.0"
 
@@ -25,6 +25,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
