@@ -1,7 +1,7 @@
 package br.com.jogosusados.features.add.data
 
 import br.com.concrete.canarinho.formatador.FormatadorValor
-import br.com.jogosusados.features.games.list.GameItem
+import br.com.jogosusados.features.search.data.GameItem
 
 data class GameAnnouncement(
     val id: Long,

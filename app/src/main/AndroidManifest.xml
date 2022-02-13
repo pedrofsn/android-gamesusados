@@ -24,8 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".features.announcement.AnnouncementActivity" />
-        <activity android:name=".features.games.select.GameSelectActivity" />
+        <activity android:name=".features.announcement.view.AnnouncementActivity" />
+        <activity android:name=".features.select.view.GameSelectActivity" />
     </application>
 
 </manifest>

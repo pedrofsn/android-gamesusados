@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="br.com.jogosusados.features.announcement.Announcement" />
+            type="br.com.jogosusados.features.announcement.data.Announcement" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

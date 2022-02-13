@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="br.com.jogosusados.features.games.list.GameItem" />
+            type="br.com.jogosusados.features.search.data.GameItem" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

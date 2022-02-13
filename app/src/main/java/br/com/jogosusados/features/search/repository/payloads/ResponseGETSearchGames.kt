@@ -1,6 +1,5 @@
 package br.com.jogosusados.features.search.repository.payloads
 
-import br.com.jogosusados.features.games.domain.payload.GameDTO
 import br.com.jogosusados.features.search.data.PaginatedGames
 import br.com.redcode.base.interfaces.Payload
 

@@ -1,6 +1,6 @@
 package br.com.jogosusados.features.search.repository
 
-import br.com.jogosusados.features.games.list.GameItem
+import br.com.jogosusados.features.search.data.GameItem
 import br.com.jogosusados.features.search.domain.Paginated
 import br.com.jogosusados.network.Request
 import br.com.jogosusados.network.Request.call

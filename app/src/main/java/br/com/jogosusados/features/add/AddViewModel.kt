@@ -3,8 +3,9 @@ package br.com.jogosusados.features.add
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import br.com.concrete.canarinho.formatador.Formatador.VALOR_COM_SIMBOLO
+import br.com.jogosusados.features.add.data.LabelAddGame
 import br.com.jogosusados.features.add.repository.AddRepository
-import br.com.jogosusados.features.games.list.GameItem
+import br.com.jogosusados.features.search.data.GameItem
 import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
 import br.com.redcode.easyrestful.library.extensions.process
 import br.com.redcode.easyrestful.library.impl.viewmodel.BaseViewModelWithLiveData

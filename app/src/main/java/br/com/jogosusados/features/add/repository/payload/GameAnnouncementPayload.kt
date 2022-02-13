@@ -2,8 +2,8 @@ package br.com.jogosusados.features.add.repository.payload
 
 import br.com.jogosusados.features.add.data.GameAnnouncement
 import br.com.jogosusados.features.add.data.Owner
-import br.com.jogosusados.features.games.domain.payload.GameDTO
-import br.com.jogosusados.features.games.list.GameItem
+import br.com.jogosusados.features.search.repository.payloads.GameDTO
+import br.com.jogosusados.features.search.data.GameItem
 import br.com.redcode.base.extensions.extract
 import br.com.redcode.base.interfaces.Payload
 
