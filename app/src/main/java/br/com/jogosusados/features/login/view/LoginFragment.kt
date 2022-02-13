@@ -8,8 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentLoginBinding
-import br.com.jogosusados.features.login.di.LoginModule
 import br.com.jogosusados.features.login.LoginViewModel
+import br.com.jogosusados.features.login.di.LoginModule
 import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
 import br.com.redcode.easyvalidation.Validate
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -71,5 +71,4 @@ class LoginFragment : FragmentMVVMDataBinding<FragmentLoginBinding, LoginViewMod
         super.onDestroy()
         unloadKoinModules(LoginModule.instance)
     }
-
 }
