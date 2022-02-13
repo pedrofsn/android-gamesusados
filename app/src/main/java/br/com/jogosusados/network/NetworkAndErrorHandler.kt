@@ -2,7 +2,6 @@ package br.com.jogosusados.network
 
 import br.com.jogosusados.BuildConfig
 import br.com.redcode.base.extensions.toLogcat
-import br.com.redcode.base.utils.Constants
 import br.com.redcode.base.utils.Constants.ERROR_API_CLEAN_AND_FORCE_LOGIN
 import br.com.redcode.easyreftrofit.library.AbstractNetworkAndErrorHandler
 import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
@@ -28,21 +27,28 @@ class NetworkAndErrorHandler(
     }
 
     private fun checkIfTokenHasExpired(exception: HttpException) {
-        val networkError = exception.code()
-        val errorBody = exception.response()?.errorBody()?.string()
-        val hasNotBody = errorBody?.trim()?.isBlank() == true
-        if (HTTP_STATUS_CODE_TOKEN_EXPIRED == networkError && hasNotBody) {
-            onTokenExpired()
-        } else {
-            super.handle(exception)
+        when (val networkError = exception.code()) {
+            HTTP_STATUS_CODE_TOKEN_EXPIRED -> onTokenExpired(networkError)
+            HTTP_STATUS_CODE_UNAUTHORIZED_ACCESS -> onUnauthorizedAccess(networkError)
+            else -> super.handle(exception)
         }
     }
 
-    private fun onTokenExpired() {
+    private fun onUnauthorizedAccess(networkError: Int) {
+        callbackNetworkRequest?.onNetworkHttpError(
+            errorHandled = ErrorHandled(
+                message = "",
+                networkError = networkError,
+                actionAPI = networkError
+            )
+        )
+    }
+
+    private fun onTokenExpired(networkError: Int) {
         callbackNetworkRequest?.onNetworkHttpError(
             errorHandled = ErrorHandled(
                 message = "Por favor, faça login novamente",
-                networkError = HTTP_STATUS_CODE_TOKEN_EXPIRED,
+                networkError = networkError,
                 actionAPI = ERROR_API_CLEAN_AND_FORCE_LOGIN
             )
         )
@@ -73,6 +79,7 @@ class NetworkAndErrorHandler(
     }
 
     companion object {
+        const val HTTP_STATUS_CODE_UNAUTHORIZED_ACCESS = 401
         private const val HTTP_STATUS_CODE_TOKEN_EXPIRED = 403
     }
 }
