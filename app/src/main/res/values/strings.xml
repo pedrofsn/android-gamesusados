@@ -16,4 +16,5 @@
     <string name="to_save">Salvar</string>
     <string name="name">Nome</string>
     <string name="type">Tipo</string>
+    <string name="network_unauthorized_access">Verifique os dados de acesso e tente novamente</string>
 </resources>
