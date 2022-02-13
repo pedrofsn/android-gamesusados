@@ -39,6 +39,10 @@ class StorageImpl(private val fileName: String, private val context: Context) : 
         }
     }
 
+    override fun clearAll() {
+        sharedPreferences.edit().clear().apply()
+    }
+
     override fun delete(key: String) {
         sharedPreferences.edit().remove(key)?.apply()
     }
