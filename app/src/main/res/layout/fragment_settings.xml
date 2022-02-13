@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -9,69 +10,87 @@
             type="br.com.jogosusados.features.settings.SettingsViewModel" />
     </data>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/respiro_visual"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/name"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/respiro_visual"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:showOrHide="@{viewModel.processing == false}"
+            tools:visibility="visible">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.liveData.name}"
-            tools:text="@tools:sample/full_names" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="@dimen/respiro_visual_menor"
-            android:layout_marginBottom="@dimen/respiro_visual_menor"
-            android:background="@color/separator_weak_gray" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.liveData.name}"
+                tools:text="@tools:sample/full_names" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/email"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="@dimen/respiro_visual_menor"
+                android:layout_marginBottom="@dimen/respiro_visual_menor"
+                android:background="@color/separator_weak_gray" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.liveData.email}"
-            tools:text="pedrokra@gmail.com" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="@dimen/respiro_visual_menor"
-            android:layout_marginBottom="@dimen/respiro_visual_menor"
-            android:background="@color/separator_weak_gray" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.liveData.email}"
+                tools:text="pedrokra@gmail.com" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/type"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="@dimen/respiro_visual_menor"
+                android:layout_marginBottom="@dimen/respiro_visual_menor"
+                android:background="@color/separator_weak_gray" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.liveData.type}"
-            tools:text="Usuário" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/type"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="@dimen/respiro_visual_menor"
-            android:layout_marginBottom="@dimen/respiro_visual_menor"
-            android:background="@color/separator_weak_gray" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.liveData.type}"
+                tools:text="Usuário" />
 
-    </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="@dimen/respiro_visual_menor"
+                android:layout_marginBottom="@dimen/respiro_visual_menor"
+                android:background="@color/separator_weak_gray" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:showOrHide="@{viewModel.processing == true}" />
+
+    </FrameLayout>
+
 
 </layout>
