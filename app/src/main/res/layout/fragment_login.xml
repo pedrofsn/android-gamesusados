@@ -75,10 +75,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="@string/to_enter"
-            app:beInvisible="@{viewModel.processing == false}"
             app:layout_constraintEnd_toEndOf="@+id/textInputLayoutPassword"
             app:layout_constraintStart_toStartOf="@+id/textInputLayoutPassword"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword"
+            app:showOrHide="@{viewModel.processing == false}" />
 
         <ProgressBar
             android:layout_width="90dp"
