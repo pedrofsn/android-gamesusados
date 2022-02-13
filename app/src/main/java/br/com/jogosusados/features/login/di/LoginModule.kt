@@ -19,6 +19,7 @@ object LoginModule {
         factory<LoginRepository> { (callback: CallbackNetworkRequest?) ->
             LoginRepositoryImpl(
                 api = get(),
+                storage = get(),
                 callbackNetworkRequest = callback
             )
         }

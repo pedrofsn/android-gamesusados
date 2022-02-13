@@ -5,4 +5,5 @@ import br.com.jogosusados.network.Requestable
 
 interface LoginRepository : Requestable {
     suspend fun login(email: String, password: String): LoggedDTO?
+    suspend fun checkIfHasToken(): Boolean
 }
