@@ -28,6 +28,7 @@
                 android:layout_width="0dp"
                 android:layout_height="180dp"
                 android:scaleType="centerInside"
+                app:layout_constraintBottom_toTopOf="@+id/textViewTitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -42,9 +43,9 @@
                 android:layout_marginEnd="16dp"
                 android:text="@{data.game.title}"
                 android:textAppearance="?attr/textAppearanceHeadline6"
+                app:layout_constraintBottom_toTopOf="@+id/textViewSubtitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
                 tools:text="Shadow ow Colossus" />
 
             <TextView
@@ -56,7 +57,6 @@
                 app:layout_constraintBottom_toTopOf="@+id/textViewSubtitle2"
                 app:layout_constraintEnd_toEndOf="@+id/textViewTitle"
                 app:layout_constraintStart_toStartOf="@+id/textViewTitle"
-                app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
                 tools:text="Playstation 2" />
 
             <com.google.android.material.chip.Chip
@@ -69,25 +69,10 @@
                 android:text="@{data.getLabelPrice()}"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textViewSubtitle"
                 app:layout_constraintStart_toStartOf="@+id/textViewSubtitle"
-                app:layout_constraintTop_toBottomOf="@+id/textViewSubtitle"
                 tools:text="R$ 200,00" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/textViewAction"
-                style="?attr/borderlessButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="9dp"
-                android:layout_marginBottom="16dp"
-                android:gravity="start|center_vertical"
-                android:text="@string/select"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/textViewSubtitle2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewSubtitle2" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
