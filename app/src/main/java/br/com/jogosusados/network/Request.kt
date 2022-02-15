@@ -52,7 +52,7 @@ object Request {
                 is UnknownHostException -> throw exception
                 is SocketTimeoutException -> {
                     val errorHandled = ErrorHandled(
-                        message = "deu ruim",
+                        message = "Verifique sua conexão com a internet",
                         networkError = 123
                     )
                     callbackNetworkRequest?.onNetworkHttpError(errorHandled)
