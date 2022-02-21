@@ -24,6 +24,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:name=".domain.MyFileProvider"
+            android:authorities="${applicationId}.GenericFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/easyimage_filepaths" />
+        </provider>
+
         <activity android:name=".features.announcement.view.AnnouncementActivity" />
         <activity android:name=".features.select.view.GameSelectActivity" />
     </application>

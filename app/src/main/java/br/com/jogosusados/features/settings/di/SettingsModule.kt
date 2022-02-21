@@ -38,6 +38,7 @@ object SettingsModule {
             SettingsRepositoryImpl(
                 local = get(),
                 remote = get { parametersOf(callback) },
+                context = get()
             )
         }
 

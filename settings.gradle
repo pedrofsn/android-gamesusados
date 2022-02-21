@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "android-gamesusados"
 include ':app'
 include ':feature-storage'
+include ':feature-image'

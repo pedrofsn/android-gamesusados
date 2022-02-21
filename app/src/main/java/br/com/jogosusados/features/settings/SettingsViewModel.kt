@@ -8,6 +8,7 @@ import br.com.redcode.easyrestful.library.impl.viewmodel.BaseViewModelWithLiveDa
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.parameter.parametersOf
+import java.io.File
 
 class SettingsViewModel(callback: CallbackNetworkRequest?) :
     BaseViewModelWithLiveData<Profile>(), KoinComponent {
@@ -17,5 +18,11 @@ class SettingsViewModel(callback: CallbackNetworkRequest?) :
     }
 
     override fun load() = process { repository.getMyProfile() }
+
+    fun chooseImage() = sendEventToUI("chooseImage")
+
+    fun uploadProfileImage(file: File) = process("onUploaded") {
+        repository.uploadImageProfile(file)
+    }
 }
 

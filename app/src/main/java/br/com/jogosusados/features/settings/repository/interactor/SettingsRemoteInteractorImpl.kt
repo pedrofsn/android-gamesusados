@@ -9,6 +9,7 @@ import br.com.jogosusados.network.Request.call
 import br.com.jogosusados.network.Request.handled
 import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
 import com.squareup.moshi.Moshi
+import okhttp3.MultipartBody
 
 class SettingsRemoteInteractorImpl(
     private val storage: Storage,
@@ -30,4 +31,8 @@ class SettingsRemoteInteractorImpl(
             storage.save(PROFILE, json)
         }
     }
+
+    override suspend fun uploadImageProfile(file: MultipartBody.Part) = Request with api call {
+        uploadProfileImage(file)
+    } handled callbackNetworkRequest
 }
