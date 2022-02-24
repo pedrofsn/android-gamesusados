@@ -63,6 +63,7 @@ class SettingsFragment : FragmentMVVMDataBinding<FragmentSettingsBinding, Settin
     }
 
     private fun updateUI(label: Profile) {
+        binding.imageView.load(label.image)
         hideProgress()
     }
 
