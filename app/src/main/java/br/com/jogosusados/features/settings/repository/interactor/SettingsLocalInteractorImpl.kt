@@ -16,6 +16,14 @@ class SettingsLocalInteractorImpl(
         val json = storage.getString(PROFILE, "")
         return if (json.isNotBlank()) adapter.fromJson(json) else null
     }
+
+    override suspend fun saveProfile(profile: Profile?) {
+        if (profile != null) {
+            val adapter = moshi.adapter(Profile::class.java)
+            val json = adapter.toJson(profile)
+            storage.save(PROFILE, json)
+        }
+    }
 }
 
 

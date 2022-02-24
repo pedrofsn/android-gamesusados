@@ -7,7 +7,5 @@ import okhttp3.MultipartBody
 
 interface SettingsRemoteInteractor : Requestable {
     suspend fun getMyProfile(): Profile?
-    suspend fun saveProfile(profile: Profile?)
-
     suspend fun uploadImageProfile(file : MultipartBody.Part): ImageUploaded?
 }

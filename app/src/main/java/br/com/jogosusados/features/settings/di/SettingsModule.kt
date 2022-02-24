@@ -27,8 +27,6 @@ object SettingsModule {
 
         factory<SettingsRemoteInteractor> { (callback: CallbackNetworkRequest?) ->
             SettingsRemoteInteractorImpl(
-                storage = get(),
-                moshi = get(),
                 api = get(),
                 callbackNetworkRequest = callback
             )
