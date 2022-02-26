@@ -7,6 +7,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.component.KoinComponent
 import org.koin.core.context.GlobalContext.startKoin
+import timber.log.Timber
 
 class App : Application(), KoinComponent {
 
@@ -23,6 +24,7 @@ class App : Application(), KoinComponent {
             androidContext(this@App)
             modules(modules)
         }
+        Timber.plant(Timber.DebugTree())
     }
 
 }

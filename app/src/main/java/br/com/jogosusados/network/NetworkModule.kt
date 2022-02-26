@@ -13,6 +13,7 @@ import org.koin.dsl.module
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 object NetworkModule {
@@ -20,6 +21,7 @@ object NetworkModule {
     private const val CONNECT_TIMEOUT_IN_SECONDS: Long = 10
     private const val READ_TIMEOUT_IN_SECONDS: Long = 10
     private const val NAME_BASE_URL = "baseURL"
+    private const val TAG_HTTP_CLIENT = "OkHttp"
 
     private fun createRetrofit(
         httpClient: OkHttpClient,
@@ -31,11 +33,9 @@ object NetworkModule {
         .client(httpClient)
         .build()
 
-    private fun createLoggerInterceptor() = HttpLoggingInterceptor().apply {
-        level = if (BuildConfig.DEBUG) {
-            HttpLoggingInterceptor.Level.BODY
-        } else {
-            HttpLoggingInterceptor.Level.NONE
+    private fun createLoggerInterceptor(): HttpLoggingInterceptor {
+        return HttpLoggingInterceptor { message -> Timber.tag(TAG_HTTP_CLIENT).d(message) }.apply {
+            level = HttpLoggingInterceptor.Level.BODY
         }
     }
 

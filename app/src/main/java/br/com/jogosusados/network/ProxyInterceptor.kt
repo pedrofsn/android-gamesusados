@@ -6,6 +6,7 @@ import br.com.jogosusados.features.storage.StorageConstants.TOKEN
 import br.com.redcode.base.extensions.extract
 import okhttp3.Interceptor
 import okhttp3.Response
+import timber.log.Timber
 import java.io.IOException
 
 class ProxyInterceptor(private val storage: Storage) : Interceptor {
@@ -26,6 +27,8 @@ class ProxyInterceptor(private val storage: Storage) : Interceptor {
             .addHeader("osname", "android")
             .addHeader("Authorization", "Bearer $token")
             .url(httpUrl)
+
+        Timber.d("Using token '$token'")
 
         val request = requestBuilder.build()
         return chain.proceed(request)
