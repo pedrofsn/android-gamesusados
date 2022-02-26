@@ -1,6 +1,6 @@
 package br.com.jogosusados.features.add.data
 
-import br.com.concrete.canarinho.formatador.FormatadorValor
+import br.com.concrete.canarinho.formatador.FormatadorValor.VALOR_COM_SIMBOLO
 import br.com.jogosusados.features.search.data.GameItem
 
 data class GameAnnouncement(
@@ -9,7 +9,5 @@ data class GameAnnouncement(
     val owner: Owner,
     val price: Double
 ) {
-    fun getLabelPrice(): String {
-        return FormatadorValor.VALOR_COM_SIMBOLO.formata(price.toString())
-    }
+    fun getLabelPrice() = VALOR_COM_SIMBOLO.formata(price.toString())
 }
