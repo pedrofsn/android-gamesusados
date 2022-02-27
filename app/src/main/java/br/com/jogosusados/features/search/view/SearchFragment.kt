@@ -36,10 +36,8 @@ class SearchFragment : FragmentMVVMDataBinding<FragmentSearchBinding, SearchView
     private val observer = observer<PagedList<GameItem>> { updateUI(it) }
 
     private val adapter = AdapterPaginatedGameItem { item, _ ->
-        /*   val data = Intent()
-           data.putExtra(GameSelectActivity.TAG_GAME_ITEM, item)
-           setResult(AppCompatActivity.RESULT_OK, data)
-           finish() */
+        val homeFragment = parentFragment?.parentFragment
+        (homeFragment as? HomeFragment)?.navigateToGameAnnouncements(item.id)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -21,11 +21,28 @@
         android:id="@+id/homeFragment"
         android:name="br.com.jogosusados.features.home.view.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_gamesAnnouncement"
+            app:destination="@id/gamesAnnouncement"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out">
+            <argument
+                android:name="id"
+                android:defaultValue="-1L"
+                app:argType="long" />
+        </action>
+    </fragment>
 
     <fragment
         android:id="@+id/selectGamesFragment"
         android:name="br.com.jogosusados.features.home.view.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/gamesAnnouncement"
+        android:name="br.com.jogosusados.features.announcement.view.GameAnnouncementFragment"
+        android:label="fragment_game_announcemnt"
+        tools:layout="@layout/fragment_game_announcement" />
 </navigation>
