@@ -10,7 +10,7 @@ import br.com.redcode.base.interfaces.Payload
 data class GameAnnouncementPayload(
     val id: Long?,
     val game: GameDTO?,
-    val owner: OwnerPayload?,
+    val owner: PayloadOwner?,
     val price: Double?
 ) : Payload<GameAnnouncement> {
     override fun toModel() = GameAnnouncement(

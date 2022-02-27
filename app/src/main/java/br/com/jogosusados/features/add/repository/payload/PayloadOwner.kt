@@ -4,7 +4,7 @@ import br.com.jogosusados.features.add.data.Owner
 import br.com.redcode.base.extensions.extract
 import br.com.redcode.base.interfaces.Payload
 
-data class OwnerPayload(
+data class PayloadOwner(
     val name: String?,
     val phone: String?,
     val email: String?

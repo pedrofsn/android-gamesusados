@@ -1,5 +1,6 @@
-package br.com.jogosusados.features.announcement.repository
+package br.com.jogosusados.features.announcement.repository.payload
 
+import br.com.jogosusados.features.announcement.repository.DetailGameAnnouncement
 import br.com.jogosusados.features.search.data.GameItem
 import br.com.jogosusados.features.search.repository.payloads.GameDTO
 import br.com.redcode.base.interfaces.Payload
