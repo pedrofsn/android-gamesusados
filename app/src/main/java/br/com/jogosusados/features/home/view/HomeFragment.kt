@@ -1,6 +1,7 @@
 package br.com.jogosusados.features.home.view
 
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
@@ -25,6 +26,11 @@ class HomeFragment : FragmentMVVMDataBinding<FragmentHomeBinding, HomeViewModel>
 
     private fun avoidReselection() {
         binding.bottomNavigationView.setOnItemReselectedListener { }
+    }
+
+    fun navigateToGameAnnouncements(id: Long) {
+        val directions = HomeFragmentDirections.actionHomeFragmentToGamesAnnouncement(id)
+        findNavController().navigate(directions)
     }
 
 }

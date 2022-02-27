@@ -10,6 +10,7 @@ import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentSearchBinding
+import br.com.jogosusados.features.home.view.HomeFragment
 import br.com.jogosusados.features.search.SearchViewModel
 import br.com.jogosusados.features.search.data.GameItem
 import br.com.jogosusados.features.search.di.SearchGamesModules
