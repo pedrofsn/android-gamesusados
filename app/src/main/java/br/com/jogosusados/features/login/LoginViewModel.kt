@@ -19,7 +19,7 @@ class LoginViewModel(callback: CallbackNetworkRequest?) : BaseViewModel(), KoinC
     val password = ObservableField<String>()
 
     fun checkIfHasToken() = process("onLoggedIn") {
-        loginRepository.refreshToken()
+        loginRepository.reuseToken()
     }
 
     fun login() = process("onLoggedIn") {

@@ -5,6 +5,6 @@ import br.com.jogosusados.network.Requestable
 
 interface LoginRepository : Requestable {
     suspend fun login(email: String, password: String): LoggedDTO?
-    suspend fun refreshToken(): LoggedDTO?
-    suspend fun hasTokenLocally(): Boolean
+    suspend fun reuseToken(): LoggedDTO?
+    suspend fun getTokenLocally(): String
 }

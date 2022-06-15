@@ -22,15 +22,10 @@ class LoginRepositoryImpl(
         return logged
     }
 
-    override suspend fun refreshToken(): LoggedDTO? {
-        if(hasTokenLocally()) {
-            val logged = Request with api call { refreshToken() } handled callbackNetworkRequest
-            if (logged != null) storage.save(TOKEN, logged.token)
-            return logged
-        }
-
-        return null
+    override suspend fun reuseToken(): LoggedDTO? {
+        val token = getTokenLocally()
+        return if (token.isNotBlank()) LoggedDTO(token = token) else null
     }
 
-    override suspend fun hasTokenLocally() = storage.getString(TOKEN, "").isNotBlank()
+    override suspend fun getTokenLocally() = storage.getString(TOKEN, "")
 }
