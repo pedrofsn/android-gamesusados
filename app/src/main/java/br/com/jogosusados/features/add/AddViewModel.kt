@@ -30,7 +30,11 @@ class AddViewModel(callback: CallbackNetworkRequest?) : BaseViewModelWithLiveDat
     }
 
     fun updatePlatform(idPlatform: Long?) = this.idPlataform.postValue(idPlatform)
-    fun updateGame(gameItem: GameItem?) = this.gameItem.postValue(gameItem)
+    fun updateGame(gameItem: GameItem?) {
+        if (this.gameItem.value == null || gameItem != null) {
+            this.gameItem.postValue(gameItem)
+        }
+    }
 
     fun onPlatformSelected(idPlatform: Long) {
         updatePlatform(idPlatform)
