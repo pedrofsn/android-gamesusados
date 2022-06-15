@@ -67,8 +67,7 @@ class SearchFragment : FragmentMVVMDataBinding<FragmentSearchBinding, SearchView
     }
 
     private fun setupRecyclerView() {
-        val layoutManager = GridLayoutManager(requireContext(), 2)
-        binding.recyclerView.setCustomAdapter(adapter, layoutManager)
+        binding.recyclerView.setCustomAdapter(adapter)
     }
 
     private fun setupSearchView() {
