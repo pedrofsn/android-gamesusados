@@ -58,8 +58,7 @@ class GameSelectActivity : ActivityMVVM<ActivityGameSelectBinding, GameSelectVie
 
     override fun afterOnCreate() {
         enableHomeAsUpActionBar()
-        val layoutManager = GridLayoutManager(this, 2)
-        binding.recyclerView.setCustomAdapter(adapter, layoutManager)
+        binding.recyclerView.setCustomAdapter(adapter)
     }
 
     override fun onResume() {
