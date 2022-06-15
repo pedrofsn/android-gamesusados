@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentSettingsBinding
@@ -63,7 +64,13 @@ class SettingsFragment : FragmentMVVMDataBinding<FragmentSettingsBinding, Settin
     }
 
     private fun updateUI(label: Profile) {
-        binding.imageView.load(label.image)
+        if(label.image.isNullOrBlank()) {
+            val drawable = ContextCompat.getDrawable(requireActivity(), R.drawable.ic_baseline_person_24)
+            binding.imageView.setImageDrawable(drawable)
+        } else {
+            binding.imageView.load(label.image)
+        }
+
         hideProgress()
     }
 
