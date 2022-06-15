@@ -57,8 +57,7 @@ class MyGamesAnnouncementsFragment :
     }
 
     override fun afterOnCreate() {
-        val layoutManager = GridLayoutManager(requireContext(), 2)
-        binding.recyclerView.setCustomAdapter(adapter, layoutManager)
+        binding.recyclerView.setCustomAdapter(adapter)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
