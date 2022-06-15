@@ -7,12 +7,13 @@ import br.com.redcode.base.interfaces.Payload
 data class GameDTO(
     val id: Long?,
     val title: String?,
-    val platform: String?
+    val platform: String?,
+    val image: String?
 ) : Payload<GameItem> {
     override fun toModel() = GameItem(
         id = extract safe id,
         title = extract safe title,
-        image = "",
+        image = extract safe image,
         subtitle = extract safe platform
     )
 }
