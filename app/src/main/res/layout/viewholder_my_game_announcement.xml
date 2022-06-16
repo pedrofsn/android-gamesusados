@@ -12,7 +12,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="175dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
@@ -25,9 +25,10 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="200dp"
-                android:layout_height="180dp"
-                android:scaleType="centerInside"
+                android:layout_width="130dp"
+                android:layout_height="170dp"
+                android:layout_marginStart="@dimen/respiro_visual_menor"
+                android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -42,7 +43,6 @@
                 android:layout_marginEnd="16dp"
                 android:text="@{data.game.title}"
                 android:textAppearance="?attr/textAppearanceHeadline6"
-                app:layout_constraintBottom_toTopOf="@+id/textViewSubtitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="@+id/imageView"
@@ -51,12 +51,13 @@
             <TextView
                 android:id="@+id/textViewSubtitle"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:text="@{data.game.subtitle}"
                 android:textAppearance="?attr/textAppearanceBody2"
                 app:layout_constraintBottom_toTopOf="@+id/textViewSubtitle2"
                 app:layout_constraintEnd_toEndOf="@+id/textViewTitle"
                 app:layout_constraintStart_toStartOf="@+id/textViewTitle"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
                 tools:text="Playstation 2" />
 
             <com.google.android.material.chip.Chip
@@ -71,7 +72,7 @@
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textViewSubtitle"
-                app:layout_constraintStart_toStartOf="@+id/textViewSubtitle"
+                app:layout_constraintTop_toBottomOf="@+id/textViewSubtitle"
                 tools:text="R$ 200,00" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
