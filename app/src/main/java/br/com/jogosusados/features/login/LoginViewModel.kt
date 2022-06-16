@@ -20,6 +20,9 @@ class LoginViewModel(callback: CallbackNetworkRequest?) : BaseViewModel(), KoinC
 
     fun checkIfHasToken() = process("onLoggedIn") {
         loginRepository.reuseToken()
+    }.also {
+        username.set("user1@gmail.com")
+        password.set("123456")
     }
 
     fun login() = process("onLoggedIn") {
