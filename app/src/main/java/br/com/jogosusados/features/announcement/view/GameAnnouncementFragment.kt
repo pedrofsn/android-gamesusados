@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentGameAnnouncementBinding
 import br.com.jogosusados.domain.getLong
@@ -61,8 +62,14 @@ class GameAnnouncementFragment :
     }
 
     override fun afterOnCreate() {
+        binding.toolbar.setNavigationIcon(android.R.drawable.ic_menu_close_clear_cancel)
+        binding.toolbar.setNavigationOnClickListener { closeScreen() }
         binding.recyclerView.setCustomAdapter(adapter)
         viewModel.load(id)
+    }
+
+    private fun closeScreen() {
+        findNavController().popBackStack()
     }
 
     private fun updateUI(data: DetailGameAnnouncement) {
