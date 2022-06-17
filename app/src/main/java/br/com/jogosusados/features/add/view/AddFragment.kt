@@ -13,13 +13,14 @@ import br.com.jogosusados.databinding.FragmentAddBinding
 import br.com.jogosusados.domain.addSafeMarginInPrefix
 import br.com.jogosusados.domain.getSelectedChip
 import br.com.jogosusados.features.add.AddViewModel
-import br.com.jogosusados.features.add.data.LabelAddGame
 import br.com.jogosusados.features.add.data.GameAnnouncement
 import br.com.jogosusados.features.add.data.IdWithTitle
+import br.com.jogosusados.features.add.data.LabelAddGame
 import br.com.jogosusados.features.add.di.AddModules
 import br.com.jogosusados.features.search.data.GameItem
 import br.com.redcode.base.mvvm.extensions.observer
 import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
+import br.com.redcode.easyglide.library.load
 import br.com.redcode.easymask.handleMoney
 import br.com.redcode.easyvalidation.Validate
 import com.google.android.material.chip.Chip
@@ -68,7 +69,16 @@ class AddFragment : FragmentMVVMDataBinding<FragmentAddBinding, AddViewModel>() 
         setupListeners()
         binding.textInputEditText.handleMoney(hasSymbol = false)
         binding.textInputLayout.addSafeMarginInPrefix(requireActivity() as AppCompatActivity)
+        observeSelectedGame()
         viewModel.load()
+    }
+
+    private fun observeSelectedGame() {
+        viewModel.gameItem.observe(this) { game ->
+            if (game != null && game.image.isNotBlank()) {
+                binding.imageView.load(game.image)
+            }
+        }
     }
 
     private fun registerCallbackToSelectGame() {
