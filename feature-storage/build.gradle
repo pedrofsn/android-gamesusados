@@ -37,7 +37,7 @@ dependencies {
     implementation "io.insert-koin:koin-android:${versions.koin_version}"
 
     // Security
-    implementation 'androidx.security:security-crypto:1.0.0-beta01'
+    implementation 'androidx.security:security-crypto:1.1.0-alpha03'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
