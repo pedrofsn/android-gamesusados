@@ -11,7 +11,7 @@ import timber.log.Timber
 
 class App : Application(), KoinComponent {
 
-    private val modules = listOf(NetworkModule.instance, StorageModule.instace)
+    private val modules = listOf(StorageModule.instace, NetworkModule.instance)
 
     override fun onCreate() {
         super.onCreate()

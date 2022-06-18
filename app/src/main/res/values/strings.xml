@@ -18,4 +18,5 @@
     <string name="type">Tipo</string>
     <string name="network_unauthorized_access">Verifique os dados de acesso e tente novamente</string>
     <string name="title_game_announcement">Game anunciado</string>
+    <string name="logout">Logout</string>
 </resources>

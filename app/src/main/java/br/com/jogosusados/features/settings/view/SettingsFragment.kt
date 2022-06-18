@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentSettingsBinding
+import br.com.jogosusados.features.navigation.MainActivity
 import br.com.jogosusados.features.settings.SettingsViewModel
 import br.com.jogosusados.features.settings.data.ImageUploaded
 import br.com.jogosusados.features.settings.data.Profile
@@ -110,8 +111,13 @@ class SettingsFragment : FragmentMVVMDataBinding<FragmentSettingsBinding, Settin
         when (event) {
             "onUploaded" -> if (obj != null && obj is ImageUploaded) onUploaded(obj)
             "chooseImage" -> chooseImage()
+            "onLogout" -> onLogout()
             else -> super.handleEvent(event, obj)
         }
+    }
+
+    private fun onLogout() {
+        (requireActivity() as MainActivity).clearLocalDataAndGoToLoginScreen()
     }
 
     private fun onUploaded(imageUploaded: ImageUploaded) {

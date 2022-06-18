@@ -24,6 +24,8 @@ class SettingsLocalInteractorImpl(
             storage.save(PROFILE, json)
         }
     }
+
+    override suspend fun clearAll() = storage.clearAll()
 }
 
 

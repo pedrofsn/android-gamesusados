@@ -14,5 +14,5 @@ interface Storage {
     fun getLong(key: String, defaultValue: Long): Long
     fun getInt(key: String, defaultValue: Int): Int
 
-    fun clearAll()
+    fun clearAll(): Boolean
 }

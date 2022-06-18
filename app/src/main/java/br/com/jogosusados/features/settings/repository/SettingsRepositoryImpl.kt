@@ -30,4 +30,9 @@ class SettingsRepositoryImpl(
         val profileUpdated = local.getMyProfile()?.copy(image = result?.url)
         local.saveProfile(profileUpdated)
     }
+
+    override suspend fun logout() : Boolean {
+        // TODO [pedrofsn] handle remote logout
+        return local.clearAll()
+    }
 }

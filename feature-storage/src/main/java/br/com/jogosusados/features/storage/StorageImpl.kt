@@ -3,18 +3,19 @@ package br.com.jogosusados.features.storage
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
-import androidx.security.crypto.MasterKeys
-
+import androidx.security.crypto.MasterKey
 
 class StorageImpl(private val fileName: String, private val context: Context) : Storage {
 
     private val sharedPreferences: SharedPreferences by lazy {
-        val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+        val masterKey = MasterKey.Builder(context, MasterKey.DEFAULT_MASTER_KEY_ALIAS)
+            .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+            .build()
 
-        EncryptedSharedPreferences.create(
-            fileName,
-            masterKeyAlias,
+        return@lazy EncryptedSharedPreferences.create(
             context,
+            fileName,
+            masterKey,
             EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
             EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
         )
@@ -39,8 +40,9 @@ class StorageImpl(private val fileName: String, private val context: Context) : 
         }
     }
 
-    override fun clearAll() {
+    override fun clearAll(): Boolean {
         sharedPreferences.edit().clear().apply()
+        return true
     }
 
     override fun delete(key: String) {

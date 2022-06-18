@@ -24,5 +24,7 @@ class SettingsViewModel(callback: CallbackNetworkRequest?) :
     fun uploadProfileImage(file: File) = process("onUploaded") {
         repository.uploadImageProfile(file)
     }
+
+    fun logout() = process("onLogout") { repository.logout() }
 }
 
