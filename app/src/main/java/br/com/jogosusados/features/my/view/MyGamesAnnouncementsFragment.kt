@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.GridLayoutManager
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentMyGamesAnnouncementsBinding
 import br.com.jogosusados.features.my.MyGamesAnnouncementsViewModel
@@ -31,9 +30,7 @@ class MyGamesAnnouncementsFragment :
 
     private val observer = observer<LabelMyGamesAnnouncements> { updateUI(it) }
 
-    private val adapter = MyGamesAnnouncementAdapter { item, position ->
-        toast(item.owner.name)
-    }
+    private val adapter = MyGamesAnnouncementAdapter { _, _ -> }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         loadKoinModules(MyGamesModules.instance)
