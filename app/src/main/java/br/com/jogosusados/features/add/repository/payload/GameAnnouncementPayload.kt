@@ -11,12 +11,14 @@ data class GameAnnouncementPayload(
     val id: Long?,
     val game: GameDTO?,
     val owner: PayloadOwner?,
-    val price: Double?
+    val price: Double?,
+    val enabled: Boolean?
 ) : Payload<GameAnnouncement> {
     override fun toModel() = GameAnnouncement(
         id = extract safe id,
-        game = extract safe game ?: GameItem(id = -1, image = "", title = "", subtitle = ""),
-        owner = extract safe owner ?: Owner(name = "", phone = "", email = ""),
-        price = extract safe price
+        game = (extract safe game) ?: GameItem(id = -1, image = "", title = "", subtitle = ""),
+        owner = (extract safe owner) ?: Owner(name = "", phone = "", email = ""),
+        price = extract safe price,
+        enabled = extract safe enabled
     )
 }

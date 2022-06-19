@@ -7,7 +7,8 @@ data class GameAnnouncement(
     val id: Long,
     val game: GameItem,
     val owner: Owner,
-    val price: Double
+    val price: Double,
+    val enabled: Boolean
 ) {
-    fun getLabelPrice() = VALOR_COM_SIMBOLO.formata(price.toString())
+    fun getLabelPrice(): String = VALOR_COM_SIMBOLO.formata(price.toString())
 }
