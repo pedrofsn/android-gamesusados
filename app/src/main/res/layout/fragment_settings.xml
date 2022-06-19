@@ -75,6 +75,25 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@string/mobilephone"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.liveData.phone}"
+                tools:text="@tools:sample/us_phones" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="@dimen/respiro_visual_menor"
+                android:layout_marginBottom="@dimen/respiro_visual_menor"
+                android:background="@color/separator_weak_gray" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/type"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
