@@ -21,4 +21,7 @@
     <string name="logout">Logout</string>
     <string name="mobilephone">Celular</string>
     <string name="pending_approval">Aguardando\nAprovação</string>
+    <string name="usertype_admin">Administrador</string>
+    <string name="usertype_manager">Gerente</string>
+    <string name="usertype_regular">Usuário</string>
 </resources>
