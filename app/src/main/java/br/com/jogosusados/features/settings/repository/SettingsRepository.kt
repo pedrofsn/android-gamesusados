@@ -7,5 +7,4 @@ import java.io.File
 interface SettingsRepository {
     suspend fun getMyProfile(): Profile?
     suspend fun uploadImageProfile(file: File): ImageUploaded?
-    suspend fun logout(): Boolean
 }

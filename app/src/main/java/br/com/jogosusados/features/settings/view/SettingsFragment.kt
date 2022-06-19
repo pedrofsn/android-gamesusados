@@ -137,7 +137,6 @@ class SettingsFragment : FragmentMVVMDataBinding<FragmentSettingsBinding, Settin
         when (event) {
             "onUploaded" -> if (obj != null && obj is ImageUploaded) onUploaded(obj)
             "chooseImage" -> chooseImage()
-            "onLogout" -> onLogout()
             else -> super.handleEvent(event, obj)
         }
     }
