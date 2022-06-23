@@ -1,6 +1,8 @@
 package br.com.jogosusados.network
 
+import br.com.jogosusados.features.my.repository.MyGamesAPI
 import br.com.redcode.base.interfaces.Payload
+import br.com.redcode.base.rest.PayloadError
 import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
 import br.com.redcode.easyreftrofit.library.model.ErrorHandled
 import org.koin.core.parameter.parametersOf

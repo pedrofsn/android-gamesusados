@@ -12,6 +12,7 @@ import br.com.jogosusados.features.my.data.LabelMyGamesAnnouncements
 import br.com.jogosusados.features.my.di.MyGamesModules
 import br.com.redcode.base.mvvm.extensions.observer
 import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
+import br.com.redcode.base.utils.Alerts
 import br.com.redcode.easyrecyclerview.library.extension_functions.setCustomAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
@@ -30,7 +31,17 @@ class MyGamesAnnouncementsFragment :
 
     private val observer = observer<LabelMyGamesAnnouncements> { updateUI(it) }
 
-    private val adapter = MyGamesAnnouncementAdapter { _, _ -> }
+    private val adapter = MyGamesAnnouncementAdapter { gameAnnouncement ->
+        if (gameAnnouncement.enabled) {
+            val game = gameAnnouncement.game
+            Alerts.showDialogYesOrNot(
+                requireContext(),
+                getString(R.string.ask_lock_game_announcement, game.title, game.subtitle)
+            ) {
+                viewModel.disableGameAnnouncement(gameAnnouncement.id)
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         loadKoinModules(MyGamesModules.instance)
@@ -65,6 +76,13 @@ class MyGamesAnnouncementsFragment :
     private fun updateUI(label: LabelMyGamesAnnouncements) {
         adapter.setCustomList(label.games)
         hideProgress()
+    }
+
+    override fun handleEvent(event: String, obj: Any?) {
+        when (event) {
+            "onDisabled" -> showMessage(obj)
+            else -> super.handleEvent(event, obj)
+        }
     }
 
     override fun onDestroy() {

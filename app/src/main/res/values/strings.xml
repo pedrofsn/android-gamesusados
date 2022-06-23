@@ -24,4 +24,5 @@
     <string name="usertype_admin">Administrador</string>
     <string name="usertype_manager">Gerente</string>
     <string name="usertype_regular">Usuário</string>
+    <string name="ask_lock_game_announcement">Tem certeza que deseja desativar o anúncio referente ao game \'%s\ do console \'%s\'?\n\nEsta ação poderá ser desfeita somente por um gerente.</string>
 </resources>

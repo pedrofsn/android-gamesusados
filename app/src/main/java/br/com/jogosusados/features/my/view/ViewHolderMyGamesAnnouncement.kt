@@ -11,6 +11,14 @@ import jp.wasabeef.glide.transformations.GrayscaleTransformation
 class ViewHolderMyGamesAnnouncement(binding: ViewholderMyGameAnnouncementBinding) :
     BaseViewHolderMVVM<GameAnnouncement, ViewholderMyGameAnnouncementBinding>(binding) {
 
+    fun bind(data: GameAnnouncement, onLongClickListener: (GameAnnouncement) -> Unit) {
+        bind(data)
+        binding.materialCardView.setOnLongClickListener {
+            onLongClickListener(data)
+            return@setOnLongClickListener true
+        }
+    }
+
     override fun bind(data: GameAnnouncement) {
         binding.data = data
         loadImage(data)

@@ -20,4 +20,8 @@ class MyGamesAnnouncementsViewModel(callback: CallbackNetworkRequest?) :
         val platforms = repository.getMyGamesAnnouncements()
         LabelMyGamesAnnouncements(platforms)
     }
+
+    fun disableGameAnnouncement(idGameAnnouncement: Long) = process("onDisabled") {
+        repository.disableGameAnnouncement(idGameAnnouncement).also { load() }
+    }
 }
