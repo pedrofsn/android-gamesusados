@@ -25,6 +25,15 @@
     <string name="usertype_manager">Gerente</string>
     <string name="usertype_regular">Usuário</string>
     <string name="ask_lock_game_announcement">Tem certeza que deseja desativar o anúncio referente ao game \'%s\ do console \'%s\'?\n\nEsta ação poderá ser desfeita somente por um gerente.</string>
-    <string name="input_confirm_password">Digite a senha (novamente)</string>
+    <string name="input_confirm_password">Confirme a senha</string>
     <string name="input_password">Digite a senha</string>
+    <string name="user_data">Dados do usuário</string>
+    <string name="register">Cadastro</string>
+    <string name="fullname">Nome completo</string>
+    <string name="lgpd_phone">O seu telefone será compartilhado com outros usuários da plataforma</string>
+    <string name="lgpd_email">O seu e-mail será compartilhado com outros usuários da plataforma</string>
+    <string name="lgpd_fullname">O seu nome completo será compartilhado com outros usuários da plataforma</string>
+    <string name="rule_password">Utilize uma senha com mais de 5 caracteres</string>
+    <string name="rule_password_confirmation">Repita a senha</string>
+    <string name="to_register">Cadastrar</string>
 </resources>
