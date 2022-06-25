@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentUserRegisterBinding
 import br.com.jogosusados.features.register.di.UserRegisterModules
@@ -91,6 +93,19 @@ class UserRegisterFragment :
             }
         }
         return result
+    }
+
+    override fun handleEvent(event: String, obj: Any?) {
+        when (event) {
+            "onRegistered" -> onRegistered()
+            else -> super.handleEvent(event, obj)
+        }
+    }
+
+    private fun onRegistered() {
+        Toast.makeText(requireActivity(), getString(R.string.welcome), Toast.LENGTH_LONG).show()
+        val directions = UserRegisterFragmentDirections.actionUserRegisterFragmentToHomeFragment()
+        findNavController().navigate(directions, navOptions { popUpTo })
     }
 
     override fun onDestroy() {
