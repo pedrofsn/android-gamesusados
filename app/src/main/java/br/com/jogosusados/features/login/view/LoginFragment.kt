@@ -10,9 +10,9 @@ import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentLoginBinding
 import br.com.jogosusados.features.login.LoginViewModel
 import br.com.jogosusados.features.login.di.LoginModule
-import br.com.jogosusados.features.register.UserRegisterFragment
 import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
-import br.com.redcode.easyvalidation.Validate
+import br.com.redcode.easyglide.library.load
+import br.com.redcode.easyvalidation.Validate.isFilled
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
@@ -46,16 +46,19 @@ class LoginFragment : FragmentMVVMDataBinding<FragmentLoginBinding, LoginViewMod
     override fun afterOnCreate() {
         viewModel.checkIfHasToken()
         binding.button.setOnClickListener { validateForm() }
+        binding.buttonRegister.setOnClickListener { openRegisterScreen() }
+        binding.imageViewLogo.load(R.mipmap.ic_launcher)
+    }
+
+    private fun openRegisterScreen() {
+        val directions = LoginFragmentDirections.actionLoginFragmentToUserRegisterFragment()
+        findNavController().navigate(directions)
     }
 
     private fun validateForm() {
-        val directions = LoginFragmentDirections.actionLoginFragmentToUserRegisterFragment()
-        findNavController().navigate(directions)
-//        if (Validate.isFilled(
-//                binding.textInputEditTextUsername,
-//                binding.textInputEditTextPassword
-//            )
-//        ) viewModel.login()
+        if (isFilled(binding.textInputEditTextUsername, binding.textInputEditTextPassword)) {
+            viewModel.login()
+        }
     }
 
     override fun handleEvent(event: String, obj: Any?) {
