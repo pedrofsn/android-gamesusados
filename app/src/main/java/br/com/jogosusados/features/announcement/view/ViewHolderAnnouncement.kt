@@ -11,4 +11,9 @@ class ViewHolderAnnouncement(binding: ViewholderAnnouncementBinding) :
         binding.data = data
     }
 
+    override fun bind(data: Announcement, onClick: ((Announcement, Int) -> Unit)?) {
+        bind(data)
+        click(binding.imageViewToReport, data, onClick)
+    }
+
 }

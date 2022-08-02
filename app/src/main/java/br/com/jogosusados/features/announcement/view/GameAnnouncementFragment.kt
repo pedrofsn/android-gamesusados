@@ -3,6 +3,7 @@ package br.com.jogosusados.features.announcement.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -37,7 +38,8 @@ class GameAnnouncementFragment :
     private val observer = observer<DetailGameAnnouncement> { updateUI(it) }
 
     private val adapter = AdapterAnnouncement { item, position ->
-
+        toast("Deseja denunciar o anúncio do ${item.owner.name}?")
+        // TODO implementar UI para fazer denúncia do game
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +55,28 @@ class GameAnnouncementFragment :
         binding = DataBindingUtil.inflate(inflater, layout, container, false)
         viewModel = gameAnnouncementViewModel
         defineMVVM(this)
+        setupToolbar()
         return binding.root
+    }
+
+    private fun setupToolbar() {
+        setHasOptionsMenu(true)
+        binding.toolbar.apply {
+            inflateMenu(R.menu.game_announcement_menu)
+            setOnMenuItemClickListener { item: MenuItem ->
+                return@setOnMenuItemClickListener when (item.itemId) {
+                    R.id.to_report -> {
+                        toReport()
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }
+    }
+
+    private fun toReport() {
+        toast("Deseja denunciar este jogo?") // TODO implementar UI para fazer denúncia do game
     }
 
     override fun setupUI() {

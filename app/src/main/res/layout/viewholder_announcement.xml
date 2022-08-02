@@ -17,7 +17,8 @@
         android:layout_marginEnd="8dp"
         app:cardElevation="8dp"
         app:cardUseCompatPadding="true"
-        app:contentPadding="8dp">
+        app:contentPadding="8dp"
+        app:rippleColor="@android:color/transparent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -30,7 +31,7 @@
                 android:layout_marginEnd="8dp"
                 android:drawablePadding="4dp"
                 android:text="@{data.owner.name}"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 app:drawableStartCompat="@drawable/ic_baseline_person_24"
                 app:layout_constraintEnd_toStartOf="@+id/textViewValue"
@@ -45,7 +46,7 @@
                 android:layout_marginEnd="8dp"
                 android:drawablePadding="4dp"
                 android:text="@{data.getLabelPrice()}"
-                android:textSize="16sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -55,8 +56,12 @@
                 android:id="@+id/textViewContact"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:autoLink="email"
                 android:drawablePadding="4dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
                 android:text="@{data.owner.email}"
+                android:textSize="16sp"
                 app:drawableStartCompat="@drawable/ic_baseline_email_24"
                 app:layout_constraintEnd_toEndOf="@+id/textViewName"
                 app:layout_constraintStart_toStartOf="@+id/textViewName"
@@ -67,13 +72,26 @@
                 android:id="@+id/textViewPhone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:autoLink="phone"
                 android:drawablePadding="4dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
                 android:text="@{data.owner.phone}"
+                android:textSize="16sp"
                 app:drawableStartCompat="@drawable/ic_baseline_phone_android_24"
                 app:layout_constraintEnd_toEndOf="@+id/textViewContact"
                 app:layout_constraintStart_toStartOf="@+id/textViewContact"
                 app:layout_constraintTop_toBottomOf="@+id/textViewContact"
                 tools:text="+55 62 9 1234-5678" />
+
+            <ImageView
+                android:id="@+id/imageViewToReport"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_baseline_report_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:tint="@android:color/black" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
