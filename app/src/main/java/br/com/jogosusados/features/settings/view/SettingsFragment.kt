@@ -75,7 +75,6 @@ class SettingsFragment : FragmentMVVMDataBinding<FragmentSettingsBinding, Settin
     override fun onCreate(savedInstanceState: Bundle?) {
         loadKoinModules(SettingsModule.instance)
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
