@@ -45,7 +45,7 @@
         android:id="@+id/userRegisterFragment"
         android:name="br.com.jogosusados.features.register.UserRegisterFragment"
         android:label="fragment_user_register"
-        tools:layout="@layout/fragment_user_register" >
+        tools:layout="@layout/fragment_user_register">
         <action
             android:id="@+id/action_userRegisterFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -55,5 +55,25 @@
         android:id="@+id/gamesAnnouncement"
         android:name="br.com.jogosusados.features.announcement.view.GameAnnouncementFragment"
         android:label="fragment_game_announcemnt"
-        tools:layout="@layout/fragment_game_announcement" />
+        tools:layout="@layout/fragment_game_announcement">
+        <action
+            android:id="@+id/toReportAnnouncement"
+            app:destination="@id/bottomSheetToReport">
+            <argument
+                android:name="announcement"
+                app:argType="br.com.jogosusados.features.announcement.data.Announcement" />
+        </action>
+        <action
+            android:id="@+id/toReportGame"
+            app:destination="@id/bottomSheetToReport">
+            <argument
+                android:name="game"
+                app:argType="br.com.jogosusados.features.add.data.GameAnnouncement" />
+        </action>
+    </fragment>
+
+    <dialog
+        android:id="@+id/bottomSheetToReport"
+        android:name="br.com.jogosusados.features.toreport.ToReportBottomSheet"
+        tools:layout="@layout/bottom_sheet_to_report" />
 </navigation>

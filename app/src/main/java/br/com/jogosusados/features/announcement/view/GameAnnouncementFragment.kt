@@ -2,6 +2,7 @@ package br.com.jogosusados.features.announcement.view
 
 
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -11,7 +12,9 @@ import androidx.navigation.fragment.findNavController
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentGameAnnouncementBinding
 import br.com.jogosusados.domain.getLong
+import br.com.jogosusados.features.add.data.GameAnnouncement
 import br.com.jogosusados.features.announcement.GameAnnouncementViewModel
+import br.com.jogosusados.features.announcement.data.Announcement
 import br.com.jogosusados.features.announcement.di.GameAnnouncementModules
 import br.com.jogosusados.features.announcement.repository.DetailGameAnnouncement
 import br.com.redcode.base.mvvm.extensions.observer
@@ -37,9 +40,8 @@ class GameAnnouncementFragment :
 
     private val observer = observer<DetailGameAnnouncement> { updateUI(it) }
 
-    private val adapter = AdapterAnnouncement { item, position ->
-        toast("Deseja denunciar o anúncio do ${item.owner.name}?")
-        // TODO implementar UI para fazer denúncia do game
+    private val adapter = AdapterAnnouncement { item, _ ->
+        toReport(item)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,7 +68,7 @@ class GameAnnouncementFragment :
             setOnMenuItemClickListener { item: MenuItem ->
                 return@setOnMenuItemClickListener when (item.itemId) {
                     R.id.to_report -> {
-                        toReport()
+                        viewModel.liveData.value?.game?.let { toReport(it) }
                         true
                     }
                     else -> false
@@ -75,8 +77,12 @@ class GameAnnouncementFragment :
         }
     }
 
-    private fun toReport() {
-        toast("Deseja denunciar este jogo?") // TODO implementar UI para fazer denúncia do game
+    private fun toReport(parcelable: Parcelable) {
+        when (parcelable) {
+            is Announcement -> GameAnnouncementFragmentDirections.toReportAnnouncement(parcelable)
+            is GameAnnouncement -> GameAnnouncementFragmentDirections.toReportGame(parcelable)
+            else -> null
+        }?.let { directions -> findNavController().navigate(directions) }
     }
 
     override fun setupUI() {
