@@ -38,4 +38,6 @@
     <string name="to_register">Cadastrar</string>
     <string name="welcome">Seja bem-vindo(a) ao nosso app</string>
     <string name="to_report">Denunciar</string>
+    <string name="to_report_hint">O que há de errado com este conteúdo que está denunciando?</string>
+    <string name="type_here">Digite aqui</string>
 </resources>
