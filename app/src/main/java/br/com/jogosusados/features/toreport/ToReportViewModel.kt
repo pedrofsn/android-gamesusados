@@ -25,4 +25,8 @@ class ToReportViewModel(callback: CallbackNetworkRequest?) : BaseViewModelWithLi
         this@ToReportViewModel.title.set(title)
         liveData.value = data
     }
+
+    fun toReport() {
+        toast(input.get().toString())
+    }
 }
