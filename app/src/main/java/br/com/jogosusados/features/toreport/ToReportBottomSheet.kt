@@ -62,7 +62,6 @@ class ToReportBottomSheet : BottomSheetDialogFragment() {
 
     private fun updateContent() {
         viewModel.update(data)
-        viewModel.title.set(data.buildTitle(requireContext()))
     }
 
     override fun onResume() {

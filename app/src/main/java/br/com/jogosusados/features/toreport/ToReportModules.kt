@@ -1,7 +1,12 @@
 package br.com.jogosusados.features.toreport
 
+import br.com.jogosusados.R
+import br.com.jogosusados.features.toreport.ToReportType.ANNOUNCEMENT
+import br.com.jogosusados.features.toreport.ToReportType.GAME
 import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
+import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 object ToReportModules {
@@ -16,6 +21,16 @@ object ToReportModules {
 //                callbackNetworkRequest = callback
 //            )
 //        }
+
+        single(named(GAME)) { titleGame ->
+            val text = titleGame.get<String>()
+            androidContext().getString(R.string.to_report_hint_game, text)
+        }
+
+        single(named(ANNOUNCEMENT)) { titleAnnouncement ->
+            val text = titleAnnouncement.get<String>()
+            androidContext().getString(R.string.to_report_hint_announcement, text)
+        }
 
         viewModel { (callback: CallbackNetworkRequest?) -> ToReportViewModel(callback) }
     }
