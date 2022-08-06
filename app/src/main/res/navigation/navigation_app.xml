@@ -68,7 +68,7 @@
             app:destination="@id/bottomSheetToReport">
             <argument
                 android:name="game"
-                app:argType="br.com.jogosusados.features.add.data.GameAnnouncement" />
+                app:argType="br.com.jogosusados.features.search.data.GameItem" />
         </action>
     </fragment>
 

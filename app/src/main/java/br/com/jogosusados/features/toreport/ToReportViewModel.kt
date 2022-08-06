@@ -7,6 +7,7 @@ import br.com.redcode.easyrestful.library.impl.viewmodel.BaseViewModelWithLiveDa
 class ToReportViewModel(callback: CallbackNetworkRequest?) : BaseViewModelWithLiveData<ToReport>() {
 
     val input = ObservableField<String>()
+    val title = ObservableField<String>()
 
     override fun load() {
         liveData.value?.let {

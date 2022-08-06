@@ -12,6 +12,7 @@ import br.com.jogosusados.R
 import br.com.jogosusados.databinding.BottomSheetToReportBinding
 import br.com.jogosusados.features.add.data.GameAnnouncement
 import br.com.jogosusados.features.announcement.data.Announcement
+import br.com.jogosusados.features.search.data.GameItem
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
@@ -24,7 +25,7 @@ class ToReportBottomSheet : BottomSheetDialogFragment() {
     private lateinit var binding: BottomSheetToReportBinding
 
     val data by lazy {
-        val game = arguments?.getParcelable<GameAnnouncement>("game")
+        val game = arguments?.getParcelable<GameItem>("game")
         val announcement = arguments?.getParcelable<Announcement>("announcement")
         return@lazy ToReport(game, announcement)
     }
@@ -56,7 +57,12 @@ class ToReportBottomSheet : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        updateContent()
+    }
+
+    private fun updateContent() {
         viewModel.update(data)
+        viewModel.title.set(data.buildTitle(requireContext()))
     }
 
     override fun onResume() {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -19,12 +20,13 @@
             android:layout_marginBottom="@dimen/respiro_visual_menor"
             android:gravity="center"
             android:paddingTop="@dimen/respiro_visual_menor"
-            android:text="@string/to_report_hint"
+            android:text="@{viewModel.title}"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
             app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
-            app:layout_constraintStart_toStartOf="@+id/textInputLayout" />
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+            tools:text="@string/to_report_hint_announcement" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout"

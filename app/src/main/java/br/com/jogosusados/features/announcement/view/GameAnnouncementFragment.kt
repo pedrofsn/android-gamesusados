@@ -12,11 +12,11 @@ import androidx.navigation.fragment.findNavController
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentGameAnnouncementBinding
 import br.com.jogosusados.domain.getLong
-import br.com.jogosusados.features.add.data.GameAnnouncement
 import br.com.jogosusados.features.announcement.GameAnnouncementViewModel
 import br.com.jogosusados.features.announcement.data.Announcement
 import br.com.jogosusados.features.announcement.di.GameAnnouncementModules
 import br.com.jogosusados.features.announcement.repository.DetailGameAnnouncement
+import br.com.jogosusados.features.search.data.GameItem
 import br.com.redcode.base.mvvm.extensions.observer
 import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
 import br.com.redcode.easyglide.library.load
@@ -68,7 +68,7 @@ class GameAnnouncementFragment :
             setOnMenuItemClickListener { item: MenuItem ->
                 return@setOnMenuItemClickListener when (item.itemId) {
                     R.id.to_report -> {
-                        viewModel.liveData.value?.game?.let { toReport(it) }
+                        toReportGame()
                         true
                     }
                     else -> false
@@ -77,10 +77,16 @@ class GameAnnouncementFragment :
         }
     }
 
+    private fun toReportGame() {
+        viewModel.liveData.value?.game?.let { game ->
+            toReport(game)
+        }
+    }
+
     private fun toReport(parcelable: Parcelable) {
         when (parcelable) {
             is Announcement -> GameAnnouncementFragmentDirections.toReportAnnouncement(parcelable)
-            is GameAnnouncement -> GameAnnouncementFragmentDirections.toReportGame(parcelable)
+            is GameItem -> GameAnnouncementFragmentDirections.toReportGame(parcelable)
             else -> null
         }?.let { directions -> findNavController().navigate(directions) }
     }
