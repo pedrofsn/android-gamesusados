@@ -4,13 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.LifecycleOwner
+import androidx.navigation.fragment.findNavController
 import br.com.jogosusados.BR
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.BottomSheetToReportBinding
-import br.com.jogosusados.features.add.data.GameAnnouncement
 import br.com.jogosusados.features.announcement.data.Announcement
 import br.com.jogosusados.features.search.data.GameItem
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -57,21 +59,28 @@ class ToReportBottomSheet : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        updateContent()
+        preparaData()
     }
 
-    private fun updateContent() {
+    private fun preparaData() {
         viewModel.update(data)
+        binding.button.setOnClickListener { toReport() }
     }
 
-    override fun onResume() {
-        super.onResume()
-        viewModel.load()
+    private fun toReport() {
+        val input = viewModel.input.get().orEmpty()
+        setFragmentResult(REQUEST_KEY_INPUT, bundleOf(BUNDLE_INPUT to input))
+        findNavController().popBackStack()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         unloadKoinModules(ToReportModules.instance)
+    }
+
+    companion object {
+        const val REQUEST_KEY_INPUT = "requestKeyInput"
+        const val BUNDLE_INPUT = "input"
     }
 }
 

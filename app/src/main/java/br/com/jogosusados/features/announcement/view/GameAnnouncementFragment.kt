@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentGameAnnouncementBinding
@@ -17,6 +18,8 @@ import br.com.jogosusados.features.announcement.data.Announcement
 import br.com.jogosusados.features.announcement.di.GameAnnouncementModules
 import br.com.jogosusados.features.announcement.repository.DetailGameAnnouncement
 import br.com.jogosusados.features.search.data.GameItem
+import br.com.jogosusados.features.toreport.ToReportBottomSheet.Companion.BUNDLE_INPUT
+import br.com.jogosusados.features.toreport.ToReportBottomSheet.Companion.REQUEST_KEY_INPUT
 import br.com.redcode.base.mvvm.extensions.observer
 import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
 import br.com.redcode.easyglide.library.load
@@ -47,6 +50,11 @@ class GameAnnouncementFragment :
     override fun onCreate(savedInstanceState: Bundle?) {
         loadKoinModules(GameAnnouncementModules.instance)
         super.onCreate(savedInstanceState)
+
+        setFragmentResultListener(REQUEST_KEY_INPUT) { requestKey: String, bundle: Bundle ->
+            val result = bundle.getString(BUNDLE_INPUT)
+            toast(result)
+        }
     }
 
     override fun onCreateView(
@@ -78,9 +86,7 @@ class GameAnnouncementFragment :
     }
 
     private fun toReportGame() {
-        viewModel.liveData.value?.game?.let { game ->
-            toReport(game)
-        }
+        viewModel.liveData.value?.game?.let { game -> toReport(game) }
     }
 
     private fun toReport(parcelable: Parcelable) {

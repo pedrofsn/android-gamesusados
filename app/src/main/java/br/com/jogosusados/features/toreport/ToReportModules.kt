@@ -3,7 +3,6 @@ package br.com.jogosusados.features.toreport
 import br.com.jogosusados.R
 import br.com.jogosusados.features.toreport.ToReportType.ANNOUNCEMENT
 import br.com.jogosusados.features.toreport.ToReportType.GAME
-import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
@@ -32,6 +31,6 @@ object ToReportModules {
             androidContext().getString(R.string.to_report_hint_announcement, text)
         }
 
-        viewModel { (callback: CallbackNetworkRequest?) -> ToReportViewModel(callback) }
+        viewModel { ToReportViewModel() }
     }
 }
