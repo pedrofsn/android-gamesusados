@@ -18,7 +18,9 @@ import br.com.jogosusados.features.announcement.data.Announcement
 import br.com.jogosusados.features.announcement.di.GameAnnouncementModules
 import br.com.jogosusados.features.announcement.repository.DetailGameAnnouncement
 import br.com.jogosusados.features.search.data.GameItem
+import br.com.jogosusados.features.toreport.ToReport
 import br.com.jogosusados.features.toreport.ToReportBottomSheet.Companion.BUNDLE_INPUT
+import br.com.jogosusados.features.toreport.ToReportBottomSheet.Companion.REQUEST_KEY_DATA
 import br.com.jogosusados.features.toreport.ToReportBottomSheet.Companion.REQUEST_KEY_INPUT
 import br.com.redcode.base.mvvm.extensions.observer
 import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
@@ -52,8 +54,11 @@ class GameAnnouncementFragment :
         super.onCreate(savedInstanceState)
 
         setFragmentResultListener(REQUEST_KEY_INPUT) { requestKey: String, bundle: Bundle ->
-            val result = bundle.getString(BUNDLE_INPUT)
-            toast(result)
+            bundle.getParcelable<ToReport>(REQUEST_KEY_DATA)?.let { reportData ->
+                bundle.getString(BUNDLE_INPUT)?.takeIf { it.isNotBlank() }?.let { input ->
+                    viewModel.toReport(reportData, input)
+                }
+            }
         }
     }
 
@@ -117,6 +122,13 @@ class GameAnnouncementFragment :
         adapter.setCustomList(data.announcements)
         binding.imageView.load(data.game.image)
         hideProgress()
+    }
+
+    override fun handleEvent(event: String, obj: Any?) {
+        when (event) {
+            "onReported" -> if (obj != null && obj is String) toast(obj)
+            else -> super.handleEvent(event, obj)
+        }
     }
 
     override fun onDestroy() {

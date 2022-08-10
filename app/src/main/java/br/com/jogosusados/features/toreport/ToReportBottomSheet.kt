@@ -69,7 +69,8 @@ class ToReportBottomSheet : BottomSheetDialogFragment() {
 
     private fun toReport() {
         val input = viewModel.input.get().orEmpty()
-        setFragmentResult(REQUEST_KEY_INPUT, bundleOf(BUNDLE_INPUT to input))
+        val bundle = bundleOf(BUNDLE_INPUT to input, REQUEST_KEY_DATA to data)
+        setFragmentResult(REQUEST_KEY_INPUT, bundle)
         findNavController().popBackStack()
     }
 
@@ -80,6 +81,7 @@ class ToReportBottomSheet : BottomSheetDialogFragment() {
 
     companion object {
         const val REQUEST_KEY_INPUT = "requestKeyInput"
+        const val REQUEST_KEY_DATA = "requestKeyData"
         const val BUNDLE_INPUT = "input"
     }
 }
