@@ -20,7 +20,7 @@ data class ToReport(val game: GameItem?, val announcement: Announcement?) : Parc
     fun getId() = when (type) {
         GAME -> game?.id
         ANNOUNCEMENT -> announcement?.id
-    } ?: INVALID_VALUE
+    } ?: INVALID_VALUE.toLong()
 
     fun getTitle() = when (type) {
         GAME -> game?.title
