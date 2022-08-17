@@ -1,15 +1,14 @@
 package br.com.jogosusados.network
 
-import br.com.jogosusados.features.my.repository.MyGamesAPI
 import br.com.redcode.base.interfaces.Payload
-import br.com.redcode.base.rest.PayloadError
 import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
 import br.com.redcode.easyreftrofit.library.model.ErrorHandled
+import java.net.ConnectException
+import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 import org.koin.core.parameter.parametersOf
 import org.koin.java.KoinJavaComponent
 import retrofit2.HttpException
-import java.net.SocketTimeoutException
-import java.net.UnknownHostException
 
 object Request {
 
@@ -44,27 +43,30 @@ object Request {
             return first
         } else if (second != null) {
             when (val exception = second) {
-                is HttpException -> {
-                    val handler by KoinJavaComponent.inject<NetworkAndErrorHandler>(
-                        NetworkAndErrorHandler::class.java
-                    ) { parametersOf(callbackNetworkRequest) }
-                    handler.handle(exception)
-                    exception.printStackTrace()
-                }
+                is HttpException -> callbackNetworkRequest onHttpException exception
                 is UnknownHostException -> throw exception
-                is SocketTimeoutException -> {
-                    val errorHandled = ErrorHandled(
-                        message = "Verifique sua conexão com a internet",
-                        networkError = 123
-                    )
-                    callbackNetworkRequest?.onNetworkHttpError(errorHandled)
-                }
+                is ConnectException -> onConnectionRefused(callbackNetworkRequest)
+                is SocketTimeoutException -> onConnectionRefused(callbackNetworkRequest)
                 else -> exception?.printStackTrace()
             }
-
         }
-
         return null
+    }
+
+    private infix fun CallbackNetworkRequest?.onHttpException(exception: HttpException) {
+        val handler by KoinJavaComponent.inject<NetworkAndErrorHandler>(
+            NetworkAndErrorHandler::class.java
+        ) { parametersOf(this) }
+        handler.handle(exception)
+        exception.printStackTrace()
+    }
+
+    private fun onConnectionRefused(callbackNetworkRequest: CallbackNetworkRequest?) {
+        val errorHandled = ErrorHandled(
+            message = "Verifique sua conexão com a internet",
+            networkError = 123
+        )
+        callbackNetworkRequest?.onNetworkHttpError(errorHandled)
     }
 
     inline infix fun Pair<Any?, HttpException?>.onFailure(
