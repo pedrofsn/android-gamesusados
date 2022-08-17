@@ -3,11 +3,11 @@ package br.com.jogosusados.network
 import br.com.redcode.base.interfaces.Payload
 import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
 import br.com.redcode.easyreftrofit.library.model.ErrorHandled
+import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 import org.koin.core.parameter.parametersOf
 import org.koin.java.KoinJavaComponent.inject
 import retrofit2.HttpException
-import java.net.SocketTimeoutException
-import java.net.UnknownHostException
 
 suspend fun <TypePayload : Payload<TypeModel>, TypeModel, RetrofitAPI> Requestable.doRequest(
     //callbackNetworkRequest: CallbackNetworkRequest? = null,

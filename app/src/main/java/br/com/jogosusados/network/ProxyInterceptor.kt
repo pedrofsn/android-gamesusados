@@ -4,10 +4,10 @@ import br.com.jogosusados.BuildConfig
 import br.com.jogosusados.features.storage.Storage
 import br.com.jogosusados.features.storage.StorageConstants.TOKEN
 import br.com.redcode.base.extensions.extract
+import java.io.IOException
 import okhttp3.Interceptor
 import okhttp3.Response
 import timber.log.Timber
-import java.io.IOException
 
 class ProxyInterceptor(private val storage: Storage) : Interceptor {
 

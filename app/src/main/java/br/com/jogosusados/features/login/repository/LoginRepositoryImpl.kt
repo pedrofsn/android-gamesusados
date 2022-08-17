@@ -17,7 +17,7 @@ class LoginRepositoryImpl(
 
     override suspend fun login(email: String, password: String): LoggedDTO? {
         val body = LoginPOST(email, password)
-        val logged = Request with api call { login(body) } handled  callbackNetworkRequest
+        val logged = Request with api call { login(body) } handled callbackNetworkRequest
         if (logged != null) storage.save(TOKEN, logged.token)
         return logged
     }

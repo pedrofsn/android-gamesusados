@@ -165,7 +165,7 @@ class SettingsFragment : FragmentMVVMDataBinding<FragmentSettingsBinding, Settin
         ) {
             easyImage.openCameraForImage(this)
         } else {
-            requestPermissions(arrayOf(Manifest.permission.CAMERA), REQUEST_WRITE_PERMISSION);
+            requestPermissions(arrayOf(Manifest.permission.CAMERA), REQUEST_WRITE_PERMISSION)
         }
     }
 

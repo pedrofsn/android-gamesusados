@@ -8,4 +8,4 @@ data class Owner(
     val name: String,
     val phone: String,
     val email: String
-): Parcelable
+) : Parcelable

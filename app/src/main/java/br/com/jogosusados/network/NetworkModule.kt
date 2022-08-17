@@ -1,8 +1,8 @@
 package br.com.jogosusados.network
 
-import br.com.jogosusados.BuildConfig
 import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
 import com.squareup.moshi.Moshi
+import java.util.concurrent.TimeUnit
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -14,7 +14,6 @@ import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import timber.log.Timber
-import java.util.concurrent.TimeUnit
 
 object NetworkModule {
 

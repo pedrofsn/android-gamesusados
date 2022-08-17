@@ -1,9 +1,9 @@
 package br.com.jogosusados.features.select.di
 
-import br.com.jogosusados.features.select.repository.GameSelectRepositoryImpl
+import br.com.jogosusados.features.select.GameSelectViewModel
 import br.com.jogosusados.features.select.repository.GameSelectAPI
 import br.com.jogosusados.features.select.repository.GameSelectRepository
-import br.com.jogosusados.features.select.GameSelectViewModel
+import br.com.jogosusados.features.select.repository.GameSelectRepositoryImpl
 import br.com.jogosusados.network.NetworkModule
 import br.com.redcode.easyreftrofit.library.CallbackNetworkRequest
 import org.koin.androidx.viewmodel.dsl.viewModel

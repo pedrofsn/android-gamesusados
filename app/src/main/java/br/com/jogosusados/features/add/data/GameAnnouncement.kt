@@ -12,6 +12,6 @@ data class GameAnnouncement(
     val owner: Owner,
     val price: Double,
     val enabled: Boolean
-): Parcelable {
+) : Parcelable {
     fun getLabelPrice(): String = VALOR_COM_SIMBOLO.formata(price.toString())
 }

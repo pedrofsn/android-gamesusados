@@ -3,7 +3,6 @@ package br.com.jogosusados.features.select.view
 import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.GridLayoutManager
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.ActivityGameSelectBinding
 import br.com.jogosusados.features.search.data.GameItem

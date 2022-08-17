@@ -4,10 +4,10 @@ import android.content.Context
 import android.graphics.Bitmap
 import androidx.core.content.FileProvider
 import br.com.jogosusados.image.compressImage
+import java.io.File
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
-import java.io.File
 
 suspend fun Context.prepareFileToUpload(
     file: File,

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.paging.PagedList
-import androidx.recyclerview.widget.GridLayoutManager
 import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentSearchBinding
 import br.com.jogosusados.features.home.view.HomeFragment
