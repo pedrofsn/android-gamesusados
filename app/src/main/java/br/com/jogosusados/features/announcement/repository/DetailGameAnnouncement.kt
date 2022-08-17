@@ -6,4 +6,6 @@ import br.com.jogosusados.features.search.data.GameItem
 data class DetailGameAnnouncement(
     val game: GameItem,
     val announcements: List<Announcement>
-)
+) {
+    fun isWithoutAnnouncements(): Boolean = announcements.isEmpty()
+}

@@ -85,13 +85,29 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:shouldGone="@{viewModel.liveData.isWithoutAnnouncements()}"
                     tools:itemCount="5"
                     tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/viewholder_announcement" />
+
+                <TextView
+                    android:id="@+id/textViewEmpty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="100dp"
+                    android:text="@string/without_announcements"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:showOrHide="@{viewModel.liveData.isWithoutAnnouncements()}" />
 
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
 
     </LinearLayout>
+
 </layout>
