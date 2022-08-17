@@ -16,8 +16,8 @@ import org.koin.core.parameter.parametersOf
 class AddViewModel(callback: CallbackNetworkRequest?) : BaseViewModelWithLiveData<LabelAddGame>(),
     KoinComponent {
 
-    val gameItem = MutableLiveData<GameItem>()
-    val idPlataform = MutableLiveData<Long>()
+    val gameItem = MutableLiveData<GameItem?>()
+    val idPlataform = MutableLiveData<Long?>()
     val value = ObservableField<String>()
 
     private val repository: AddRepository by inject {
@@ -29,11 +29,15 @@ class AddViewModel(callback: CallbackNetworkRequest?) : BaseViewModelWithLiveDat
         LabelAddGame(platforms)
     }
 
-    fun updatePlatform(idPlatform: Long?) = this.idPlataform.postValue(idPlatform)
+    private fun updatePlatform(idPlatform: Long?) {
+        this.idPlataform.postValue(idPlatform)
+    }
 
     fun updateGame(gameItem: GameItem?, changedPlatform: Boolean = false) {
         if (this.gameItem.value == null || gameItem != null || changedPlatform) {
             this.gameItem.postValue(gameItem)
+        } else if (this.gameItem.value != null && changedPlatform.not()) {
+            this.gameItem.postValue(null)
         }
     }
 
