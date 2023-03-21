@@ -59,7 +59,7 @@ object NetworkModule {
         }
 
         single { createService(createLoggerInterceptor(), ProxyInterceptor(storage = get())) }
-        single(named(NAME_BASE_URL)) { "http://192.168.100.29:8080/" }
+        single(named(NAME_BASE_URL)) { "http://192.168.88.4:8080/" }
 
         factory<Retrofit>(NetworkRegular) {
             createRetrofit(
