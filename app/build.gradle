@@ -67,7 +67,6 @@ dependencies {
     implementation deps.coroutines.android
 
     // DI
-    implementation "io.insert-koin:koin-core:${versions.koin_version}"
     implementation "io.insert-koin:koin-android:${versions.koin_version}"
 
     // Image Loader
@@ -85,6 +84,6 @@ dependencies {
     implementation project(":feature-image")
 
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
