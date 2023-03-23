@@ -7,7 +7,7 @@ import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import org.koin.core.parameter.parametersOf
-import org.koin.java.KoinJavaComponent
+import org.koin.java.KoinJavaComponent.get
 import retrofit2.HttpException
 
 object Request {
@@ -29,12 +29,12 @@ object Request {
     @Throws
     suspend inline infix fun <TypePayload : List<Payload<TypeModel>>, TypeModel, RetrofitAPI> RetrofitAPI.callList(
         crossinline request: suspend RetrofitAPI.() -> TypePayload,
-    ): Pair<List<TypeModel>, Exception?> {
+    ): Pair<List<TypeModel>?, Exception?> {
         return try {
             val result = request(this)
             Pair(result.map { it.toModel() }, null)
         } catch (exception: Exception) {
-            Pair(emptyList(), exception)
+            Pair(null, exception)
         }
     }
 
@@ -54,9 +54,9 @@ object Request {
     }
 
     private infix fun CallbackNetworkRequest?.onHttpException(exception: HttpException) {
-        val handler by KoinJavaComponent.inject<NetworkAndErrorHandler>(
-            NetworkAndErrorHandler::class.java
-        ) { parametersOf(this) }
+        val handler = get<NetworkAndErrorHandler>(NetworkAndErrorHandler::class.java) {
+            parametersOf(this)
+        }
         handler.handle(exception)
         exception.printStackTrace()
     }
