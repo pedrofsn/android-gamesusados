@@ -14,6 +14,6 @@ interface SettingsAPI {
     suspend fun getMyProfile(): ProfileDTO
 
     @Multipart
-    @POST("images/upload/my-profile")
+    @POST("images/upload/my-profile/createUserImage")
     suspend fun uploadProfileImage(@Part file: MultipartBody.Part): ResposePOSTImage
 }
