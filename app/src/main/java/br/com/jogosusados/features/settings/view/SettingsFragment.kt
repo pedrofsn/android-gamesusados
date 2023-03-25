@@ -22,6 +22,7 @@ import br.com.jogosusados.features.settings.data.Profile
 import br.com.jogosusados.features.settings.di.SettingsModule
 import br.com.redcode.base.mvvm.extensions.observer
 import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
+import br.com.redcode.base.utils.Alerts
 import br.com.redcode.easyglide.library.loadWithCircleTransform
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -141,7 +142,9 @@ class SettingsFragment : FragmentMVVMDataBinding<FragmentSettingsBinding, Settin
     }
 
     private fun onLogout() {
-        (requireActivity() as MainActivity).clearLocalDataAndGoToLoginScreen()
+        Alerts.showDialogYesOrNot(requireActivity(), getString(R.string.logout_confirmation)) {
+            (requireActivity() as MainActivity).clearLocalDataAndGoToLoginScreen()
+        }
     }
 
     private fun onUploaded(imageUploaded: ImageUploaded) {
