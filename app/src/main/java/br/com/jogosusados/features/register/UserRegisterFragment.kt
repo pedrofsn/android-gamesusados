@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
@@ -13,6 +12,7 @@ import br.com.jogosusados.R
 import br.com.jogosusados.databinding.FragmentUserRegisterBinding
 import br.com.jogosusados.features.register.di.UserRegisterModules
 import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
+import br.com.redcode.base.utils.Alerts
 import br.com.redcode.easymask.handlePhone
 import br.com.redcode.easyvalidation.extensions.isFilled
 import br.com.redcode.easyvalidation.extensions.setMessageError
@@ -103,9 +103,14 @@ class UserRegisterFragment :
     }
 
     private fun onRegistered() {
-        Toast.makeText(requireActivity(), getString(R.string.welcome), Toast.LENGTH_LONG).show()
-        val directions = UserRegisterFragmentDirections.actionUserRegisterFragmentToHomeFragment()
-        findNavController().navigate(directions, navOptions { popUpTo })
+        Alerts.showDialogOk(
+            context = requireActivity(),
+            title = getString(R.string.register_success_title),
+            mensagem = getString(R.string.register_success)
+        ) {
+            val directions = UserRegisterFragmentDirections.actionUserRegisterFragmentToHomeFragment()
+            findNavController().navigate(directions, navOptions { popUpTo })
+        }
     }
 
     override fun onDestroy() {
