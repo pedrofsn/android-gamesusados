@@ -26,6 +26,7 @@ import br.com.redcode.base.mvvm.extensions.observer
 import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
 import br.com.redcode.easyglide.library.load
 import br.com.redcode.easyrecyclerview.library.extension_functions.setCustomAdapter
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.unloadKoinModules
@@ -125,8 +126,13 @@ class GameAnnouncementFragment :
     }
 
     override fun handleEvent(event: String, obj: Any?) {
-        when (event) {
-            "onReported" -> if (obj != null && obj is String) toast(obj)
+        when {
+            "onReported" == event && obj != null && obj is String -> {
+                showMessage(
+                    message = obj,
+                    duration = Snackbar.LENGTH_LONG
+                )
+            }
             else -> super.handleEvent(event, obj)
         }
     }
