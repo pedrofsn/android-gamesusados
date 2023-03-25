@@ -13,6 +13,7 @@ import br.com.jogosusados.features.home.view.HomeFragment
 import br.com.jogosusados.features.search.SearchViewModel
 import br.com.jogosusados.features.search.data.GameItem
 import br.com.jogosusados.features.search.di.SearchGamesModules
+import br.com.redcode.base.extensions.clear
 import br.com.redcode.base.extensions.handleEnterKeyboard
 import br.com.redcode.base.mvvm.extensions.observer
 import br.com.redcode.base.mvvm.restful.databinding.impl.FragmentMVVMDataBinding
@@ -74,6 +75,12 @@ class SearchFragment : FragmentMVVMDataBinding<FragmentSearchBinding, SearchView
         editText.handleEnterKeyboard {
             searchGamesViewModel.pagination.invalidate()
             editText.hideKeyboard()
+        }
+        binding.searchView.setOnCloseListener {
+            editText.clear()
+            searchGamesViewModel.pagination.invalidate()
+            editText.hideKeyboard()
+            return@setOnCloseListener false
         }
     }
 
